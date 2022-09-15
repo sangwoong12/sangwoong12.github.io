@@ -31,6 +31,10 @@ github 아이디 생성이후 로그인이후 <a href="github.com/new">[reposito
 
 ## 3. GitHub Desktop 활용하기 (Window 10)
 
+Git Hub Desktop은 처음 접하는 Git을 쉽게 사용할 수 있도록 도와주는 앱이다.
+
+그중 로컬 파일과 git repository를 연동하는 작업을 할것이다.
+
 <a href="https://desktop.github.com/">https://desktop.github.com/</a>로 들어가서 Download for Windows (64 bit) 눌려 설치를 한다.
 
 설치이후
@@ -38,6 +42,30 @@ github 아이디 생성이후 로그인이후 <a href="github.com/new">[reposito
 <img src="/images/first-make-blog/3.png" width="50%" height="50%">
 
 그림처럼 검색하여 앱을 실행한다.
+
+<img src="/images/first-make-blog/4.png" width="50%" height="50%">
+
+실행하면 다음과 같은 화면이 등장한다. 
+> 1. 좌측 상단에 있는 current repository에 있는 ▼를 클릭한다. 
+> 2. 이후 Add ▼ 를 눌려 Clone repository를 누른다.
+
+<img src="/images/first-make-blog/5.png" width="50%" height="50%">
+
+해당 화면이뜨게 되는데 연동할 로컬 파일을 선택하고 처음 생성했던 자신owner.github.io 를 선택한다.
+필자의 경우 선택하게 되면 Local path란에 C:\00gitblog\sangwoong12.github.io 라고 나타난다. 마지막으로 clone을 누르면 된다.
+
+
+
+## 4. 다운받은 jekyll 테마 적용하기
+
+마지막으로 다운받은 jekyll 테마를 적용해보겠다.
+
+<img src="/images/first-make-blog/6.png" width="50%" height="50%">
+
+다운받은 파일을 Github Desktop에서 clone 해준 파일에 압축을 해제한다.
+필자의 경우 위의 사진처럼 압축을 풀어 주었다.
+
+git에 변동사항을 적용시키기 위해 다시 Github Desktop을 보게되면 
 ## Inline HTML elements
 
 HTML defines a long list of available inline tags, a complete list of which can be found on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
