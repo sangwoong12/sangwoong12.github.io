@@ -9,24 +9,35 @@ toc:  true
 Welcome to **Not Pure Poole**! This is an example post to show the layout.
 {: .message }
 
-## github를 활용해서 블로그 만들기
+# github를 활용해서 블로그 만들기
 
-1. github repository 생성
+## 1. github repository 생성
 
 github 아이디 생성이후 로그인이후 <a href="github.com/new">[repository 생성]</a>를 누른다.
 <img src="/images/first-make-blog/1.png" width="50%" height="50%">
 > 1. 빨간 글씨로 적혀있는 부분에 자신의 Owner이름.github.io 라고 작성한다.
 > 2. Public 로 체크 하고 Add a README file 를 체크한다.
 
-이후 생성하면된다.
+이후 생성하면된다. 잘 동작하는지 확인하기 위해 "자신의 이름.github.io"로 접근해서 화면이 뜬다면 성공한 것이다.
 
+## 2. 자신에게 맞는 jekyll 테마 찾기
 
-Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
+<a href="http://jekyll-themes.com/free/">http://jekyll-themes.com/free/</a>에서 찾아보는 것을 추천한다. 여러가지가 존재하고 demo를 통해 동작방식을 확인할 수 있다.
 
-> Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
+필자는 <a href="https://jekyll-themes.com/not-pure-poole/">https://jekyll-themes.com/not-pure-poole/</a>를 사용했다.
+<img src="/images/first-make-blog/1.png" width="50%" height="50%">
 
-Etiam porta **sem malesuada magna** mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+> 1. 사진에 보이는 DOWNLOAD 를 눌려 다운로드 한다.
 
+## 3. GitHub Desktop 활용하기 (Window 10)
+
+<a href="https://desktop.github.com/">https://desktop.github.com/</a>로 들어가서 Download for Windows (64 bit) 눌려 설치를 한다.
+
+설치이후
+
+<img src="/images/first-make-blog/3.png" width="50%" height="50%">
+
+그림처럼 검색하여 앱을 실행한다.
 ## Inline HTML elements
 
 HTML defines a long list of available inline tags, a complete list of which can be found on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
