@@ -14,7 +14,9 @@ Welcome to **Not Pure Poole**! This is an example post to show the layout.
 ## 1. github repository 생성
 
 github 아이디 생성이후 로그인이후 <a href="github.com/new">[repository 생성]</a>를 누른다.
+
 <img src="/images/first-make-blog/1.png" width="50%" height="50%">
+
 > 1. 빨간 글씨로 적혀있는 부분에 자신의 Owner이름.github.io 라고 작성한다.
 > 2. Public 로 체크 하고 Add a README file 를 체크한다.
 
@@ -25,7 +27,7 @@ github 아이디 생성이후 로그인이후 <a href="github.com/new">[reposito
 <a href="http://jekyll-themes.com/free/">http://jekyll-themes.com/free/</a>에서 찾아보는 것을 추천한다. 여러가지가 존재하고 demo를 통해 동작방식을 확인할 수 있다.
 
 필자는 <a href="https://jekyll-themes.com/not-pure-poole/">https://jekyll-themes.com/not-pure-poole/</a>를 사용했다.
-<img src="/images/first-make-blog/1.png" width="50%" height="50%">
+<img src="/images/first-make-blog/2.png" width="50%" height="50%">
 
 > 1. 사진에 보이는 DOWNLOAD 를 눌려 다운로드 한다.
 
