@@ -1,8 +1,8 @@
 # Setup
-title: Not Pure Poole
-description: A simple, beautiful, and powerful Jekyll theme for blogs
-url: https://vszhub.github.io
-avatar: /avatar.jpeg
+title: WWoong
+description: 모르고 넘어가는 행동, 제일 멍청한 짓
+url: https://sangwoong12.github.io
+avatar: /wwoong.jpg
 paginate: 5
 permalink: pretty
 cover_image: /bg.jpeg
@@ -28,17 +28,17 @@ exclude:
   - not-pure-poole.gemspec
 
 # Optimize Jekyl SEO Tag
-twitter:
-  username: vszhub
-  card: summary
-logo: logo.png
+# twitter:
+#   username: vszhub
+#   card: summary
+#logo: logo.png
 social:
-  name: Songzi Vong
+  name: SangWoong Park
   links:
-    - https://twitter.com/vszhub
-    - https://github.com/vszhub
+    - https://www.instagram.com/rewarddnd/
+    - https://github.com/sangwoong12/
 google_site_verification: xxxxx
-lang: en
+lang: kr
 
 sass:
   sass_dir: _sass
@@ -54,6 +54,6 @@ sass:
 
 # Specify the author for blog posts
 author:
-  name: Songzi Vong
-  url: https://github.com/vszhub/
-  email: vszhub@gmail.com
+  name: SangWoong Park
+  url: https://github.com/sangwoong12/
+  email: timeattacks2@naver.com
