@@ -25,7 +25,7 @@ github 아이디 생성이후 로그인이후 <a href="github.com/new">[reposito
 <a href="http://jekyll-themes.com/free/">http://jekyll-themes.com/free/</a>에서 찾아보는 것을 추천한다. 여러가지가 존재하고 demo를 통해 동작방식을 확인할 수 있다.
 
 필자는 <a href="https://jekyll-themes.com/not-pure-poole/">https://jekyll-themes.com/not-pure-poole/</a>를 사용했다.
-<img src="./images/first-make-blog/1.png" width="50%" height="50%">
+<img src="/images/first-make-blog/1.png" width="50%" height="50%">
 
 > 1. 사진에 보이는 DOWNLOAD 를 눌려 다운로드 한다.
 
