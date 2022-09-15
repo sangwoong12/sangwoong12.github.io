@@ -3,7 +3,7 @@ layout: post
 title: Git 블로그 만들기 - jekyll
 date: 2022-09-15 19:00:00 +0800
 last_modified_at: 2022-09-15 19:30:00 +0800
-tags: []
+tags: [git]
 toc:  true
 ---
 
