@@ -19,11 +19,12 @@ PK값 설정
 필드와 컬럼 맵핑 할때 작성 만약 같을 경우 생략해도 된다.
 ## @GeneratedValue(starategy = GenerationType.*)
 - IDENTITY  
-기본키 생성을 데이터베이스에 위함한다. 즉 @Id값을 null로 하면 DB에서 AUTO_INCREMENT를 해서 자동으로 id값을 넣어주게된다.
+기본키 생성을 데이터베이스에 위임한다. 즉 @Id값을 null로 하면 DB에서 AUTO_INCREMENT를 해서 자동으로 id값을 넣어주게된다.
 ex) MySQL  
-    - AUTO_INCREMENT는 INSERT 쿼리 실행이후 id값을 설정하게되는데 이럴경우 **영속성 컨텍스트 관리불가**하다. 
-
+    - AUTO_INCREMENT는 INSERT 쿼리 실행이후 id값을 설정하기 때문에 **영속성 컨텍스트의 1차에서 관리불가**하다. 그렇기 때문에 IDENTITY의 경우 EntityManager.persist()를 하는 시점에서 INSERT SQL을 실행하기 때문에 식별자를 조회하여 영속성 컨텍스트의 1차 캐시에 값을 넣는다.
 - SEQUENCE  
+여기는 오늘 커밋할부ㅜㅂㄴ
+
 
 - AUTO  
 - TABLE  
