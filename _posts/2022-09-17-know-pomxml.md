@@ -3,7 +3,7 @@ layout: post
 title: JPA를 위한 어노테이션 정리
 date: 2022-09-17 19:00:00 +0800
 last_modified_at: 2022-09-17 19:30:00 +0800
-tags: [maven]
+tags: [jpa]
 toc:  true
 ---
 
