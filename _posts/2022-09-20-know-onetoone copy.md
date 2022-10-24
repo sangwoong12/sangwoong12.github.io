@@ -1,6 +1,6 @@
 ---
 layout: post
-title: /@OneToOne
+title: JPA @OneToOne
 date: 2022-09-20 19:00:00 +0800
 last_modified_at: 2022-09-20 19:30:00 +0800
 tags: [jpa]
