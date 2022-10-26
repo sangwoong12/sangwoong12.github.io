@@ -7,13 +7,12 @@ tags: [jpa]
 toc:  true
 ---
 ## @ManyToOne 단방향
+하기전에 @JoinColumn 과 @OneToMany(mappedBy = *) mappedBy를 이해하고 넘어가야한다.
 
-하기전에 @JoinColumn 과 @OneToMany(mappedBy = *) mappedBy를 이해하고 넘어가야한다.  
-
-- @JoinColumn  
+- @JoinColumn
 @JoinColumn의 경우 @ManyToOne 어노테이션을 통해 다대일 연관관계를 매핑할 때 사용하는데 대상에 해당하는 @Column에 해당하는 name값을 입력하면 된다.
 
-- @OneToMany(mappedBy = * )  
+- @OneToMany(mappedBy = * )
 mappedBy의 경우 @OneToMany 어노테이션을 통해 일대다 연관관계를 매핑할 때 사용하는데 이도 마찬가지로 매핑대상이 되는 @Column name값을 입력하면 된다.
 
 
