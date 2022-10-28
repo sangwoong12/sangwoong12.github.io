@@ -63,7 +63,6 @@ public class SelectionSort {
 2. 타겟이 되는 숫자가 이전 위치에 있던 원소보다 작다면 위치를 서로 교환한다.
 3. 그 다음 타겟을 찾아 위와 같은 방법으로 반복한다.
 
-특징: 선택정렬과 다르게 첫 for문에서 앞을 +1한다.
 ```java
 public class Insertion {
     public static void sort(int[] arr) {
@@ -98,3 +97,4 @@ public class Insertion {
     }
 }
 ```
+
