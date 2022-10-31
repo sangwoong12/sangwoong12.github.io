@@ -73,7 +73,7 @@ public class Insertion {
                 arr[j] = arr[j - 1];
                 j--;
             }
-            arr[i] = toInsert;
+            arr[j] = toInsert;
         }
     }
 }
@@ -97,4 +97,70 @@ public class Insertion {
     }
 }
 ```
+## 주말 과제( 퀵, 머지 정렬 추가 정리)
+### 퀵 정렬
+1. 기준이 되는 피벗을 하나 선택한다.
+2. 피벗을 기준으로 양쪽에서 피벗보다 큰 값, 혹은 작은 값을 찾는다. 왼쪽에서부터는 피벗보다 큰 값을 찾고, 오른쪽에서부터는 피벗보다 작은 값을 찾는다.
+3. 양 방향에서 찾은 두 원소를 교환한다.
+4. 왼쪽에서 탐색하는 위치와 오른쪽에서 탐색하는 위치가 엇갈리지 않을 때 까지 2번으로 돌아가 위 과정을 반복한다.
+5. 엇갈린 기점을 기준으로 두 개의 부분리스트로 나누어 1번으로 돌아가 해당 부분리스트의 길이가 1이 아닐 때 까지 1번 과정을 반복한다. (Divide : 분할)
+6. 인접한 부분리스트끼리 합친다. (Conqure : 정복)
 
+```java
+import java.util.Arrays;
+
+public class QuickSort {
+
+  public static void main(String[] args) {
+    int[] array = new int[10];
+    for(int i = 0; i < array.length; i++){
+      array[i] = (int)(Math.random() * 100);
+    }
+    printArray(array);
+    sort(array, 0, array.length - 1);
+    printArray(array);
+  }
+
+  private static void sort(int[] a, int lo, int hi) {
+    if(lo >= hi) {
+      return;
+    }
+
+    int pivot = partition(a, lo, hi);
+
+    sort(a, lo, pivot);
+    sort(a, pivot + 1, hi);
+  }
+
+  private static int partition(int[] array, int left, int right) {
+    int lo = left - 1;
+    int hi = right + 1;
+    int pivot = array[(left + right) / 2];		// 부분리스트의 중간 요소를 피벗으로 설정
+
+
+    while(true) {
+      do {lo++;
+      } while(array[lo] < pivot);
+      do {hi--;
+      } while(array[hi] > pivot && lo <= hi);
+      if(lo >= hi) {
+        return hi;
+      }
+      swap(array, lo, hi);
+    }
+  }
+  private static void swap(int[] array, int i, int j) {
+    int temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  private static void printArray(int[] array){
+    System.out.println(Arrays.toString(array));
+  }
+}
+```
+
+### 합병정렬
+1. 주어진 리스트를 절반으로 분할하여 부분리스트로 나눈다. (Divide : 분할)
+2. 해당 부분리스트의 길이가 1이 아니라면 1번 과정을 되풀이한다.
+3. 인접한 부분리스트끼리 정렬하여 합친다. (Conqure : 정복)
