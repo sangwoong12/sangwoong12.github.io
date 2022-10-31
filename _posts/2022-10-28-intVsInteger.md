@@ -3,7 +3,7 @@ layout: post
 title: int 와 Integer의 차이
 date: 2022-10-28 09:00:00 +0800
 last_modified_at: 2022-10-28 18:00:00 +0800
-tags: [nhn,java]
+tags: [java]
 toc:  true
 ---
 
