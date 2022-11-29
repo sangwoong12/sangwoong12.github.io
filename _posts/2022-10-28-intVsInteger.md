@@ -7,12 +7,6 @@ tags: [java]
 toc:  true
 ---
 
-참고문헌
-
-<href="https://www.infoworld.com/article/3512039/does-java-pass-by-reference-or-pass-by-value.html">
-
-<href="https://velog.io/@aki/HotSpot-JVM">
-
 ### Integer
 - Immutable
   - Integer는 한번 생성되게 되면 heap 영역에서 불변하다.
