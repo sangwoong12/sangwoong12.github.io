@@ -1,11 +1,8 @@
 ---
-layout: post
 title: NhnAcademy 선발교육과정 4일차 코딩 테스트 (정렬)
+categories: [nhnAcademy]
 date: 2022-10-27 09:00:00 +0800
-last_modified_at: 2022-10-27 18:00:00 +0800
 tags: [nhn]
-toc:  true
-published : true
 ---
 
 ### 비교정렬 알고리즘 비교
