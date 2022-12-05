@@ -39,15 +39,13 @@ $ bash tools/init.sh
 
 The above command will:
 
-1. Removes some files or directories from your repository:
-    - `.travis.yml`{: .filepath}
-    - files under `_posts`{: .filepath}
+1. Remove the files in `_posts`{: .filepath} from your repository.
 
 2. If the option `--no-gh` is provided, the directory `.github`{: .filepath} will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook`{: .filepath} of `.github/workflows/pages-deploy.yml.hook`{: .filepath}, and then remove the other files and directories in the folder `.github`{: .filepath}.
 
-3. Removes item `Gemfile.lock` from `.gitignore`{: .filepath}.
+3. Remove item `Gemfile.lock` from `.gitignore`{: .filepath}.
 
-4. Creates a new commit to save the changes automatically.
+4. Create a new commit to save the changes automatically.
 
 ### Installing Dependencies
 
@@ -108,6 +106,12 @@ Now you can choose ONE of the following methods to deploy your Jekyll site.
 ### Deploy by Using GitHub Actions
 
 Ensure your Jekyll site has the file `.github/workflows/pages-deploy.yml`{: .filepath}. Otherwise, create a new one and fill in the contents of the [sample file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name. And then rename your repository to `<GH_USERNAME>.github.io` on GitHub.
+
+Furthermore, if you have committed `Gemfile.lock`{: .filepath} to the repository and your local machine is not Linux, go the the root directory of your site and update the platform list:
+
+```console
+$ bundle lock --add-platform x86_64-linux
+```
 
 Now publish your Jekyll site:
 
