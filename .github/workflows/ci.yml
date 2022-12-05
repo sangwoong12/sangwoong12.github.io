@@ -2,13 +2,14 @@ name: 'CI'
 on:
   push:
     branches-ignore:
-      - 'production'
+      - 'release/**'
       - 'docs'
     tags-ignore:
       - '**'
     paths-ignore:
       - '.github/**'
       - '!.github/workflows/ci.yml'
+      - '.travis.yml'
       - '.gitignore'
       - 'README.md'
       - 'LICENSE'
