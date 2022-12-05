@@ -1,10 +1,9 @@
 ---
-layout: post
 title: JPA @OneToMany, @ManyToOne
+author: woong
 date: 2022-09-21 19:00:00 +0800
-last_modified_at: 2022-09-21 19:30:00 +0800
+categories: [jpa]
 tags: [jpa]
-toc:  true
 ---
 ## @ManyToOne 단방향
 하기전에 @JoinColumn 과 @OneToMany(mappedBy = *) mappedBy를 이해하고 넘어가야한다.

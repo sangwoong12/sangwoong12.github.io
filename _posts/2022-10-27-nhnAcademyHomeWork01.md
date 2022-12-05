@@ -1,11 +1,9 @@
 ---
-layout: post
 title: Homework
+author: woong
 date: 2022-10-27 09:00:00 +0800
-last_modified_at: 2022-10-27 18:00:00 +0800
+categories: [nhnAcademy]
 tags: [nhn]
-toc:  true
-published : true
 ---
 
 ### 구구단 - while
