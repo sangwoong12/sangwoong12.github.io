@@ -1,8 +1,8 @@
 ---
 title: Thread
 date: 2023-03-21 09:00:00 +0800
-categories: []
-tags: [database]
+categories: [java]
+tags: [java]
 ---
 
 # 멀티 스레드 개념
