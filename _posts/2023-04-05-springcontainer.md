@@ -5,7 +5,7 @@ categories: [spring]
 tags: [spring]
 ---
 
-[Servlet] : https://sangwoong12.github.io/posts/servlet/
+[Servlet](https://sangwoong12.github.io/posts/servlet/)
 
 # Dispatcher Servlet
 - JavaEE 웹서비스를 직접 구현할때에는 Servlet 인터페이스를 구현하여 직접 만들어 사용하였다.
