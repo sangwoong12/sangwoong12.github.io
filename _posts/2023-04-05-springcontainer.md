@@ -9,7 +9,7 @@ tags: [spring]
 
 # Dispatcher Servlet
 
-- Spring MVC 프레임워크의 핵심 구성 요소중 하나로, 클라이언트 요청을 처리하고 적절한 Spring Controller로 라우티하는 역할을 한다.
+- Spring MVC 프레임워크의 핵심 구성 요소중 하나로, 클라이언트 요청을 처리하고 적절한 Spring Controller로 라우터하는 역할을 한다.
 
 
 ```java
@@ -46,11 +46,10 @@ public class MyServlet extends HttpServlet {
   - URL설정이 있는 Bean을 생성 (@Controller, Interceptor)
   - Application Context를 자신의 부모 Context로 사용한다.
   - Application Context와 Servlet Context에 같은 id로 된 Bean이 등록 되는 경우, Servlet Context에 선언된 Bean을 사용한다.
-- Application Context
+- Application Context (Root Context)
   - Web Application 최상단에 위치하고 있는 Context
   - Spring에서 ApplicationContext란 BeanFactory를 상속받고 있는 Context
-  - Spring에서 root-context.xml, applicationContext.xml 파일은 ApplicationContext 생성 시 필요한
-  - 설정정보를 담은 파일 (Bean 선언 등..)
+  - Spring에서 root-context.xml, applicationContext.xml 파일은 ApplicationContext 생성 시 필요한 설정정보를 담은 파일 (Bean 선언 등..)
   - Spring에서 생성되는 Bean에 대한 IoC Container (또는 Bean Container)
   - 특정 Servlet설정과 관계 없는 설정을 한다 (@Service, @Repository, @Configuration, @Component)
   - 서로 다른 여러 Servlet에서 공통적으로 공유해서 사용할 수 있는 Bean을 선언한다.
