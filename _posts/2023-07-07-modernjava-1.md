@@ -108,3 +108,7 @@ public class AppleGreenColorPredicate implements ApplePredicate {//녹색 사과
   }
 }
 ```
+
+<img src="images/modern/chapter2/1.png">
+
+- 위 조건에 따라 filter 메서드가 다르게 동작할 것이라고 예상할 수 있다. 이를 전략 디자인 패턴이라고 한다.
