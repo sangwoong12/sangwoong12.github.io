@@ -1,6 +1,6 @@
 ---
 title: 동작 파라미터화 코드 전달하기
-date: 2023-07-05 09:00:00 +0800
+date: 2023-07-07 09:00:00 +0800
 categories: [모던 자바 인 액션]
 tags: [jpa,book]
 ---
@@ -90,10 +90,7 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 ```java
 public interface ApplePredicate {
   boolean test (Apple apple);
-}
-```
-
-아래와 같이 다양한 선택 조건을 대표하는 여러 버전의 ApplePredicate 를 정의할 수 있다.
+}  선택 조건을 대표하는 여러 버전의 ApplePredicate 를 정의할 수 있다.
 
 ```java
 public class AppleHeavyWeightPredicate implements ApplePredicate {//무거운 사과만 선택
