@@ -17,8 +17,6 @@ tags: [jpa,book]
 
 ## 변화하는 요구사항에 대응하기
 
----
-
 ### 첫 번째 시도 : 녹색 사과 필터링
 
 ```java
@@ -38,8 +36,6 @@ public static List<Apple> filterGreenApples(List<Apple> inventory) {
 > A. 불가능하다. 위의 메서드에 파라미터를 추가하여 변화하는 요구사항에 좀 더 유연하게 대응하는 코드로 변경 해야한다.
 
 ### 두 번쟤 시도 : 색을 파라미터화
-
----
 
 ```java
 public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color) {
@@ -74,8 +70,6 @@ public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight
 
 ### 세 번째 시도 : 가능한 모든 속성으로 필터링
 
----
-
 ```java
 public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag) {
   List<Apple> result = new ArrayList<>();
@@ -91,17 +85,23 @@ public static List<Apple> filterApples(List<Apple> inventory, Color color, int w
 - 추가하여 중복은 최소화 할 수 있지만 코드가 난잡하다.
 - 요구사항이 변경될 경우 유연하게 대응하는 것도 불가능하다.
 
-## 동작 파라미터화
-
 ---
 
+## 동작 파라미터화
+
 - 위의 예제를 통해 요구사항에 더 유연하게 대응할 수 있는 방법으로 **동작 파라미터화**가 있다.
-- 참 또는 거짓을 반환하는 함수를 **프레디케이트*라고 한다.
-- 아래는 **선택 조건을 결정하는 인터페이스** 이다.
+
+### 네 번째 시도 : 추상적 조건으로 필터링
+
+- 참 또는 거짓을 반환하는 함수 (**predicate**) 인터페이스를 생성한다.
+
 ```java
 public interface ApplePredicate {
   boolean test (Apple apple);
-}  선택 조건을 대표하는 여러 버전의 ApplePredicate 를 정의할 수 있다.
+}
+```
+
+선택 조건을 대표하는 여러 버전의 ApplePredicate 를 정의할 수 있다.
 
 ```java
 public class AppleHeavyWeightPredicate implements ApplePredicate {//무거운 사과만 선택
@@ -120,3 +120,72 @@ public class AppleGreenColorPredicate implements ApplePredicate {//녹색 사과
 <img src="images/modern/chapter2/1.png">
 
 - 위 조건에 따라 filter 메서드가 다르게 동작할 것이라고 예상할 수 있다. 이를 전략 디자인 패턴이라고 한다.
+
+> Q. ApplePredicate는 어떻게 다양한 동작을 수행할 수 있을까?
+>
+> A. filterApples에서 ApplePredicate 객체를 받아 애플의 조건을 검사하도록 메서드를 수정해야 한다.
+> 이를 **동작 파라미터화** 라고 한다.
+
+```java
+public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
+  List<Apple> result = new ArrayList<>();
+  for(Apple apple : inventory) {
+    if(p.test(apple)) {
+      result.add(apple);
+    }
+  }
+}
+```
+
+- 이렇게 설계할 경우 요구사항이 추가되었을때 ApplePredicate를 적절하게 구현하는 클래스를 만들기만 하면된다.
+
+---
+
+## 복잡한 과정 간소화
+
+- 유연성과 가독성은 챙길 수 있었지만 매번 여러 클래스를 정의하고 인스턴스화해야 한다.
+- 이는 **익명 클래스**를 통해 해결할 수 있다.
+
+> Q. 익명 클래스란?
+>
+> A. 자바의 지역 클래스와 비슷한 개념이다. 익명 클래스는 말 그대로 이름이 없는 클래스로 클래스 선언과 인스턴스화를 동시에 할 수 있다.
+
+### 다섯 번째 시도 : 익명 클래스 사용
+
+```java
+List<Apple> redApples = filterApples(inventory, new ApplePredicate()) {
+  public boolean test(Apple apple) {
+    return RED.equals(apple.getColor());
+  }
+}
+```
+
+- 익명 클래스로도 아직 부족한 점이 있다.
+  - 1 : 익명 클래스는 여전히 많은 공간을 차지한다.
+  - 2 : 많은 프로그래머가 익명 클래스의 사용에 익숙하지 않다.
+
+### 여섯 번째 시도 : 람다 표현식 사용
+
+```java
+List<Apple> result = filterApples(inventory, (Apple apple -> RED.equals(apple.getColor())));
+```
+
+### 일곱 번째 시도 : 리스트 형식으로 추상화
+
+```java
+public interface Predicate<T> {
+  boolean test(T t);
+}
+
+public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+  List<T> result = new ArrayList<>();
+  for(T e : list) {
+    if(p.test(e)) {
+      reuslt.add(e);
+    }
+  }
+  return result;
+}
+```
+
+- 이렇게 설계할 경우 사과 이외 바나나, 정수, 문자열 등 리스트에 필터 메서드를 사용할 수 있다.
