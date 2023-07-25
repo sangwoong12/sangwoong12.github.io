@@ -14,4 +14,6 @@ tags: [database]
 ### 예시
 1. -44, -77, -100 에 대한 절대값을 출력하시오
 
+<div style="filter: blur()">
   SELECT ABS(-44) AS AbsValue1, ABS(-77) AS AbsValue2, ABS(-100) AS AbsValue3;
+</div>
