@@ -24,7 +24,7 @@ SELECT ABS(-100);
 
 CEILING : 올림 , FLOOR : 내림 , ROUND : 반올림
 
-```mysql
+```sql
 SELECT CEILING(3.7), FLOOR(3.7), ROUND(3.7);
 ```
 
@@ -37,7 +37,7 @@ SELECT CEILING(3.7), FLOOR(3.7), ROUND(3.7);
 
 MOD는 value1을 value2로 나눈 나머지 값을 구하는 함수
 
-```mysql
+```sql
 SELECT MOD(14, 3), 14 % 3, 14 MOD 3
 ```
 
@@ -50,7 +50,7 @@ SELECT MOD(14, 3), 14 % 3, 14 MOD 3
 
 POW 는 value1 ^ value2를 출력하는 함수, SQRT 는 value 루트 값을 출력하는 함수
 
-```mysql
+```sql
 SELECT POW(3, 2), SQRT(16)
 ```
 
@@ -63,7 +63,7 @@ SELECT POW(3, 2), SQRT(16)
 
 RAND는 0~1 무작위 실수를 반환하는 함수
 
-```mysql
+```sql
 SELECT RAND(), FLOOR(1 + (RAND() * 6));
 ```
 
@@ -76,7 +76,7 @@ SELECT RAND(), FLOOR(1 + (RAND() * 6));
 
 TRUNCATE는 소숫점을 기준으로 value1의 value2 번 째 정수 위치를 구하고 나머지는 버리는 함수
 
-```mysql
+```sql
 SELECT TRUNCATE(1234.1234, 2), TRUNCATE(1234.1234, 2);
 ```
 
@@ -89,7 +89,7 @@ SELECT TRUNCATE(1234.1234, 2), TRUNCATE(1234.1234, 2);
 
 CONV는 기존 value2 진수인 value1을 value3진수로 변환하는 함수
 
-```mysql
+```sql
 SELECT CONV(100, 10, 2);
 ```
 
@@ -102,7 +102,7 @@ SELECT CONV(100, 10, 2);
 
 DEGREES는 라디안 함수, RADIANS는 각도 값을 라디안 값으로 변환하는 함수, PI()는 3.14152fmf 반환하는 함수
 
-```mysql
+```sql
 SELECT DEGREES(PI()), RADIANS(180)
 ```
 
@@ -112,7 +112,7 @@ SELECT DEGREES(PI()), RADIANS(180)
 
 SUBSTRING 은 value를 start점부터 length만큼 출력하는 함수
 
-```mysql
+```sql
 SELECT SUBSTRING('abcd', 1, 3);
 ```
 
@@ -127,7 +127,7 @@ SELECT SUBSTRING('abcd', 1, 3);
 
 ASCII는 value의 아스키 코드값을 반환하는 함수
 
-```mysql
+```sql
 SELECT ASCII('A');
 ```
 
@@ -153,7 +153,7 @@ SELECT CHAR(65);
 
 BIT_LENGTH는 value에 할당된 Bit 크기, CHAR_LENGTH는 value문자의 개수, LENGTH는 value에 할당된 Byte수
 
-```mysql
+```sql
 SELECT BIT_LENGTH('abc'), CHAR_LENGTH('abc'), LENGTH('abc');
 ```
 
@@ -166,7 +166,7 @@ SELECT BIT_LENGTH('abc'), CHAR_LENGTH('abc'), LENGTH('abc');
 
 CONCAT 은 value들을 하나로 합치는 함수, CONCAT_WS는 value를 합칠 때 사이에 ws를 넣어주는 함수
 
-```mysql
+```sql
 SELECT CONCAT('1', '2', '3', '4'), CONCAT_WS('/', '1', '2', '3', '4');
 ```
 
@@ -181,7 +181,7 @@ SELECT CONCAT('1', '2', '3', '4'), CONCAT_WS('/', '1', '2', '3', '4');
 
 value1를 소숫점 아래 자릿수 value까지 표시 추가적으로 1000 단위마다 콤마를 표시
 
-```mysql
+```sql
 SELECT FORMAT(1234.1234, 2);
 ```
 
@@ -194,7 +194,7 @@ SELECT FORMAT(1234.1234, 2);
 
 BIN은 value를 2진수, HEX는 16진수, OCT는 8진수
 
-```mysql
+```sql
 SELECT BIN(31), HEX(31), OCT(31);
 ```
 
@@ -207,7 +207,7 @@ SELECT BIN(31), HEX(31), OCT(31);
 
 INSERT는 value의 start부터 start + count 를 지우고 change를 삽입하는 함수
 
-```mysql
+```sql
 SELECT INSERT('abcde', 2, 2, 'fff');
 ```
 
@@ -220,7 +220,7 @@ SELECT INSERT('abcde', 2, 2, 'fff');
 
 LEFT는 value를 왼쪽에서 length만큼 반환하는 함수, RIGHT는 오른쪽부터 반환하는 함수
 
-```mysql
+```sql
 SELECT LEFT('abcde', 3), RIGHT('abcde', 3);
 ```
 
@@ -233,7 +233,7 @@ SELECT LEFT('abcde', 3), RIGHT('abcde', 3);
 
 LCASE는 모두 소문자로 반환하는 함수, UCASE는 모두 대문자로 반환하는 함수
 
-```mysql
+```sql
 SELECT LCASE('aBcDe'), UCASE('aBcDe');
 ```
 
@@ -246,7 +246,7 @@ SELECT LCASE('aBcDe'), UCASE('aBcDe');
 
 LPAD는 value를 length만큼 늘리고 왼쪽에 insert를 넣는 함수 사이즈가 넘어갈 경우 insert가 짤린다, RPAD는 오른쪽에 넣는 함수
 
-```mysql
+```sql
 SELECT LPAD('abc', 5, '**'), RPAD('abc', 5, '**');
 ```
 
@@ -259,7 +259,7 @@ SELECT LPAD('abc', 5, '**'), RPAD('abc', 5, '**');
 
 LTRIM은 value의 왼쪽 공백, RTRIM은 오른쪽 공백, TRIM은 모든 공백 제거하는 함수
 
-```mysql
+```sql
 SELECT LTRIM('  abc '), RTRIM(' abc '), TRIM(' abc ');
 ```
 
@@ -274,7 +274,7 @@ SELECT LTRIM('  abc '), RTRIM(' abc '), TRIM(' abc ');
 
 REPEAT는 value를 count 만큼 반복해서 반환하는 함수
 
-```mysql
+```sql
 SELECT REPEAT('abc', 3);
 ```
 
@@ -291,7 +291,7 @@ REPLACE는 value에서 old를 new로 바꿔 반환하는 함수
 
 REVERSE는 value를 반대로 뒤집어 반환하는 함수
 
-```mysql
+```sql
 SELECT REVERSE('abc');
 ```
 
