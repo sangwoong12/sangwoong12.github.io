@@ -1,7 +1,5 @@
 ---
-title: Mysql 기본 함수
-date: 2023-07-25 18:00:00 +0800
-categories: [database]
+title: Mysql 기본 함수 date: 2023-07-25 18:00:00 +0800 categories: [database]
 tags: [database]
 ---
 
@@ -11,7 +9,7 @@ tags: [database]
 
 절대값을 구하는 함수
 
-```mysql
+```sql
 SELECT ABS(-100);
 ```
 
@@ -77,11 +75,11 @@ SELECT RAND(), FLOOR(1 + (RAND() * 6));
 TRUNCATE는 소숫점을 기준으로 value1의 value2 번 째 정수 위치를 구하고 나머지는 버리는 함수
 
 ```sql
-SELECT TRUNCATE(1234.1234, 2), TRUNCATE(1234.1234, 2);
+SELECT TRUNCATE(1234.1234, 2), TRUNCATE(1234.1234, -2);
 ```
 
 ```
-|TRUNCATE(1234.1234,2)| TRUNCATE(1234.1234,2)|
+|TRUNCATE(1234.1234,2)| TRUNCATE(1234.1234,-2)|
 |               1234.2|                  1200|
 ```
 
@@ -208,7 +206,17 @@ SELECT BIN(31), HEX(31), OCT(31);
 INSERT는 value의 start부터 start + count 를 지우고 change를 삽입하는 함수
 
 ```sql
-SELECT INSERT('abcde', 2, 2, 'fff');
+SELECT
+INSERT
+(
+'abcde'
+,
+2
+,
+2
+,
+'fff'
+);
 ```
 
 ```
@@ -221,7 +229,7 @@ SELECT INSERT('abcde', 2, 2, 'fff');
 LEFT는 value를 왼쪽에서 length만큼 반환하는 함수, RIGHT는 오른쪽부터 반환하는 함수
 
 ```sql
-SELECT LEFT('abcde', 3), RIGHT('abcde', 3);
+SELECT LEFT ('abcde', 3), RIGHT ('abcde', 3);
 ```
 
 ```
@@ -303,12 +311,3 @@ SELECT REVERSE('abc');
 ## SPACE(value)
 
 SPACE는 value만큼 공백을 생성하여 반환하는 함수
-
-
-### 예시
-
-1. -44, -77, -100 에 대한 절대값을 출력하시오
-
-<div style="filter: blur()">
-  SELECT ABS(-44) AS AbsValue1, ABS(-77) AS AbsValue2, ABS(-100) AS AbsValue3;
-</div>
