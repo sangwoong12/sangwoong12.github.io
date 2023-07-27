@@ -1,5 +1,7 @@
 ---
-title: Mysql 기본 함수 date: 2023-07-25 18:00:00 +0800 categories: [database]
+title: Mysql 기본 함수
+date: 2023-07-25 18:00:00 +0800
+categories: [database]
 tags: [database]
 ---
 
