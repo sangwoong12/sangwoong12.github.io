@@ -1,5 +1,7 @@
 ---
-title: 데이터 타입 date: 2023-07-24 18:00:00 +0800 categories: [코어 자바스크립트]
+title: 데이터 타입
+date: 2023-07-24 18:00:00 +0800
+categories: [코어 자바스크립트]
 tags: [javascript]
 ---
 
