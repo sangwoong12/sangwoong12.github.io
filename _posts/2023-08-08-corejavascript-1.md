@@ -273,4 +273,47 @@ var copyObjectViaJSON = function (target) {
 
 객체를 JSON 문법으로 변경하였다가 가시 객체로 바꾸는 방법으로 깊은 복사를 할 수 있다.
 
+## undefined 와 null
+
+### 자바스크립트 엔진에서 자동으로 부여하는 경우
+
+1. 값을 대입하지 않은 변수, 즉 데이터 영역의 메모리 주소를 지정하지 않은 식별자에 접근할 때
+2. 객체 내부의 존재하지 않는 프로퍼티에 접근하려고 할 때
+3. return 문이 없거나 호출되지 않는 함수의 실행 결과
+
+```javascript
+var a;
+console.log(a); // undefined
+
+var obj = {a:1};
+console.log(obj.a);
+console.log(obj.b); // undefined
+
+console.log(b); // RefernceError : b is not defined
+
+var func = function() {};
+console.log(c); // undefined
+```
+
+### 사용자가 undefined를 명시하는 경우
+
+자동으로 부여하는 undefined와 다르게 undefined라는 자체가 '비어있음'을 뜻하지만 값으로 동작하기 때문에 사용하지 말자.
+
+### null
+
+undefined를 사용하지말고 null을 사용하자.
+
+```javascript
+var n = null;
+
+console.log(typeof n);  //Object
+console.log(n == undefined); // true
+console.log(n == null); // true
+console.log(n === undefined); // false
+console.log(n === null); //true
+```
+
+null은 한가지 주의할 점이 있다. 바로 typeof 가 Object인 점이다. 추가적으로 동등 연산(==)의 경우 null과 undefined는 같다.
+
+
 
