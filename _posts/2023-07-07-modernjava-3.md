@@ -1,5 +1,7 @@
 ---
-title: 람다 표현식 date: 2023-07-07 18:00:00 +0800 categories: [모던 자바 인 액션]
+title: 람다 표현식
+date: 2023-07-07 18:00:00 +0800
+categories: [모던 자바 인 액션]
 tags: [jpa,book]
 ---
 
