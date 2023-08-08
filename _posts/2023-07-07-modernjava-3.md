@@ -1,14 +1,13 @@
 ---
-title: 람다 표현식
-date: 2023-07-07 18:00:00 +0800
-categories: [모던 자바 인 액션]
+title: 람다 표현식 date: 2023-07-07 18:00:00 +0800 categories: [모던 자바 인 액션]
 tags: [jpa,book]
 ---
 
 ## 람다란?
 
-- 메서드로 전달할 수 있는 익명 함수를 함수를 단순화한 것이라고 할 수 있다.
-- 람다 표현식에는 이름은 없지만, 파라미터 리스트, 바디, 반환 형식, 발생할 수 있는 예외 리스트는 가질 수 있다.
+메서드로 전달할 수 있는 익명 함수를 함수를 단순화한 것이라고 할 수 있다.
+
+람다 표현식에는 이름은 없지만, 파라미터 리스트, 바디, 반환 형식, 발생할 수 있는 예외 리스트는 가질 수 있다.
 
 ---
 
@@ -23,7 +22,7 @@ tags: [jpa,book]
 
 ## 사용방법
 
-- 기존 코드
+기존 코드
 
 ```java
 Comparator<Apple> byWeight=new Comparator<Apple> {
@@ -33,10 +32,11 @@ public int compare(Apple a1,Apple a2){
   };
 ```
 
-- 람다 코드
+람다 코드
 
 ```java
-Comparator<Apple> byWeight=(Apple a1,Apple a2)->a1.getWeight().compareTo(a2.getWeight());
+Comparator<Apple> byWeight=
+  (Apple a1,Apple a2)->a1.getWeight().compareTo(a2.getWeight());
 ```
 
 - 파라미터 리스트 :
@@ -47,7 +47,26 @@ Comparator<Apple> byWeight=(Apple a1,Apple a2)->a1.getWeight().compareTo(a2.getW
   - 두 사과의 무게를 비교한다. 람다의 반환값에 해당하는 표현식이다.
 
 ---
-## 람다 종류
-[람다 종류 및 알아보기](https://sangwoong12.github.io/posts/lambda/)
 
+## 어디에, 어떻게 람다가 사용할까?
 
+함수형 인터페이스라는 문맥에서 람다 표현식을 사용할 수 있다.
+
+### 함수형 인터페이스
+
+**함수형 인터페이스**는 정확히 하나의 추상 메서드를 지정하는 인터페이스이다.
+
+> Q, 만약 인터페이스에 디폴트 함수가 존재하면 함수형 인터페이스라고 할 수 있을까?
+>
+> A. 추상 메서드가 오직 하나면 함수형 인터페이스다.
+
+[자바 API 함수형 인터페이스](https://sangwoong12.github.io/posts/lambda/)
+
+### 함수 디스크립터
+
+함수형 인터페이스의 추상 메서드 시그니처는 람다 표현식의 시그니처를 가리킨다. 람다 표현식의 시그니처를 서술하는 메서드를 **함수 디스크립터**하고 부른다.
+
+예를 들어 Runnable 인터페이스는 인수와 반환값이 없는 시그니처로 생각할 수 있다.
+- 표기법 : () -> void
+
+## 람다 활용 : 실행 어라운드 패턴
