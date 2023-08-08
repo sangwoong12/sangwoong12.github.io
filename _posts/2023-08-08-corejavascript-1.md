@@ -1,6 +1,6 @@
 ---
 title: 데이터 타입
-date: 2023-07-24 18:00:00 +0800
+date: 2023-08-08 18:00:00 +0800
 categories: [코어 자바스크립트]
 tags: [javascript]
 ---
@@ -28,7 +28,7 @@ var a;
 
 ### 메모리
 
-<img src="../images/core-javascript/1/1.png">
+<img src="/images/core-javascript/1/1.png">
 
 위와 같이 변수 선언시 변수 영역의 빈 공간(1003)에 식별자 'a' 로 지정한다.
 
@@ -45,7 +45,7 @@ a = 'abc'; // 변수 a에 데이터 할당
 
 ### 메모리
 
-<img src="../images/core-javascript/1/2.png">
+<img src="/images/core-javascript/1/2.png">
 
 위와 같은 경우 변수 영역의 빈 공간(1003)에 식별자 'a' 로 지정이후 데이터 영역의 빈 공간(5004)에 문자열('abc')을 저장한다.
 
@@ -69,7 +69,7 @@ a = a + 'def';
 
 a 에다 'abc' + 'def' 를 할 경우
 
-<img src="../images/core-javascript/1/3.png">
+<img src="/images/core-javascript/1/3.png">
 
 예상과 다르게 새로운 문자열 'abcdef'를 만들어 그 주소를 변수 a에 주소를 할당한다.
 
@@ -99,7 +99,7 @@ var obj1 = {
 };
 ```
 
-<img src="../images/core-javascript/1/4.png">
+<img src="/images/core-javascript/1/4.png">
 
 위를 보면 obj1을 변수 영역의 빈 공간(1002) 에 할당하고 데이터 영역에 저장할려고 보니 여러 개의 프로퍼티로 이루어져 있어 각각의 변수 영역의 주소(7103~7014)를
 가르키고 있고 각각 데이터 영역의 빈 공간(5003,5004)에 값을 저장하게 된다.
@@ -113,7 +113,7 @@ obj1.a = 2;
 a 에 2를 대입하였다고 가정하자.
 
 
-<img src="../images/core-javascript/1/5.png">
+<img src="/images/core-javascript/1/5.png">
 
 그림과 같이 데이터 영역에 저장된 값은 모두 불변값이지만 변수에는 다른 값을 얼마든지 대입할 수 있기 때문에 **참조형 데이터는 가변값이다** 라고 하는 것이다.
 
@@ -129,7 +129,7 @@ var obj1 = {c: 10, d: 'ddd'};
 var obj2 = obj1;
 ```
 
-<img src="../images/core-javascript/1/6.png">
+<img src="/images/core-javascript/1/6.png">
 
 위와 같이 할당된다. 만약 데이터를 변경시 기본형 데이터와 참조형 데이터의 차이점이 무엇일까
 
@@ -140,7 +140,7 @@ b = 15;
 obj2.c = 20;
 ```
 
-<img src="../images/core-javascript/1/7.png">
+<img src="/images/core-javascript/1/7.png">
 
 기본형의 경우 새로운 데이터 영역을 가르켜 값이 달라지지만 참조형 데이터의 경우 같은 데이터 영역을 바라보기 때문에 값이 달라지지 않는다.
 
@@ -152,7 +152,7 @@ obj2.c = 20;
 obj2 = {c: 20, d: 'ddd'};
 ```
 
-<img src="../images/core-javascript/1/8.png">
+<img src="/images/core-javascript/1/8.png">
 
 ---
 
