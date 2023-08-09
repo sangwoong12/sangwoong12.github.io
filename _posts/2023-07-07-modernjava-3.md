@@ -1,7 +1,5 @@
 ---
-title: 람다 표현식
-date: 2023-07-07 18:00:00 +0800
-categories: [모던 자바 인 액션]
+title: 람다 표현식 date: 2023-07-07 18:00:00 +0800 categories: [모던 자바 인 액션]
 tags: [jpa,book]
 ---
 
@@ -41,6 +39,8 @@ Comparator<Apple> byWeight=
   (Apple a1,Apple a2)->a1.getWeight().compareTo(a2.getWeight());
 ```
 
+<img src="/images/modern/chapter3/1.png">
+
 - 파라미터 리스트 :
   - Comparator의 메서드 파라미터(사과 두개) : (Apple a1, Apple a2)
 - 화살표 :
@@ -50,25 +50,60 @@ Comparator<Apple> byWeight=
 
 ---
 
-## 어디에, 어떻게 람다가 사용할까?
-
-함수형 인터페이스라는 문맥에서 람다 표현식을 사용할 수 있다.
-
-### 함수형 인터페이스
+## 함수형 인터페이스
 
 **함수형 인터페이스**는 정확히 하나의 추상 메서드를 지정하는 인터페이스이다.
 
-> Q, 만약 인터페이스에 디폴트 함수가 존재하면 함수형 인터페이스라고 할 수 있을까?
->
-> A. 추상 메서드가 오직 하나면 함수형 인터페이스다.
+### 자바에서 지원하는 함수형 인터페이스
 
+```java
+
+@FunctionalInterface
+public interface Comparator {
+
+  int compare(T o1, T o2);
+}
+
+@FunctionalInterface
+public interface Runnable {
+
+  void run();
+}
+```
+
+> Q, 만약 인터페이스에 Java8 부터 지원하는 디폴트 함수가 존재하면 함수형 인터페이스라고 할 수 있을까?
+>
+> A. 수많은 디폴트 함수가 존재해도 추상 메서드가 오직 하나면 함수형 인터페이스다.
+
+### @FunctionalInterface
+
+**@FunctionalInterface**는 함수형 인터페이스임을 가르키는 어노테이션으로 추상 메서드를 하나를 선언하도록 강제할 수 있다.
+
+```java
+@FunctionalInterface
+public interface Function {
+  void method1();
+  void method2(); // Multiple non-overriding abstract methods found in interface [Interface Name]
+}
+```
+
+
+
+### 자바 API 함수형 인터페이스
 [자바 API 함수형 인터페이스](https://sangwoong12.github.io/posts/lambda/)
+
 
 ### 함수 디스크립터
 
-함수형 인터페이스의 추상 메서드 시그니처는 람다 표현식의 시그니처를 가리킨다. 람다 표현식의 시그니처를 서술하는 메서드를 **함수 디스크립터**하고 부른다.
+함수형 인터페이스의 추상 메서드 시그니처는 람다 표현식의 시그니처를 서술하는 메서드를 **함수 디스크립터**하고 부른다.
 
 예를 들어 Runnable 인터페이스는 인수와 반환값이 없는 시그니처로 생각할 수 있다.
+
 - 표기법 : () -> void
 
 ## 람다 활용 : 실행 어라운드 패턴
+
+<img src="/images/modern/chapter3/2.png">
+
+
+
