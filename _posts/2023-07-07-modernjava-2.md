@@ -2,7 +2,7 @@
 title: 동작 파라미터화 코드 전달하기
 date: 2023-07-07 09:00:00 +0800
 categories: [모던 자바 인 액션]
-tags: [jpa,book]
+tags: [book]
 ---
 
 ## 동작 파라미터화란?

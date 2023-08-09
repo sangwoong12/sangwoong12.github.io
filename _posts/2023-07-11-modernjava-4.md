@@ -2,7 +2,7 @@
 title: 스트림 소개
 date: 2023-07-11 18:00:00 +0800
 categories: [모던 자바 인 액션]
-tags: [jpa,book]
+tags: [book]
 ---
 
 # 스트림이란 무엇인가?
