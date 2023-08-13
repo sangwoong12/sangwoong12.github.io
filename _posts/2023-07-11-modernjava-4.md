@@ -111,16 +111,16 @@ s.forEach(System.out::println);
 
 ## 외부 반복과 내부 반복
 
-- 컬렉션 인터페이스를 사용하려면 사용자가 직접 요소를 반복해야 한다.(for-each, Iterable) 이를 **외부 반복**이라고 한다.
+컬렉션 인터페이스를 사용하려면 사용자가 직접 요소를 반복해야 한다.(for-each, Iterable) 이를 **외부 반복**이라고 한다.
 
 ```java
 List<String> names = new ArrayList<>();
-for(Dish dish : menu) {
+for (Dish dish : menu) {
   names.add(dish.getName());
 }
 ```
 
-- 스트림 라이브러리는 (반복을 알아서 처리하고 결과 스트림값을 어딘가에 저장해주는) **내부 반복**을 사용한다.
+스트림 라이브러리는 (반복을 알아서 처리하고 결과 스트림값을 어딘가에 저장해주는) **내부 반복**을 사용한다.
 
 ```java
 List<String> names = menu.stream()
@@ -128,4 +128,56 @@ List<String> names = menu.stream()
                     .collect(toList());
 ```
 
-##
+사용자가 직접 요소를 반복하는 것을 외부 반복(external iteration),
+반복을 알아서 처리하고 결과 스트림값을 어딘가에 저장해주는 내부 반복(internal iteration)을 사용한다.
+
+내부 반복을 사용하면 작업을 투명하게 병렬적으로 처리하거나 최적화된 다양한 순서로 처리가 가능하다.
+외부 반복에서는 병렬성을 스스로 관리(synchronized 사용)해야 한다.
+
+---
+
+## 중간 연산
+
+중간 연산은 다른 스트림을 반환한ㄷ. 따라서 여러 중간 연산을 견결하여 질의를 만들 수 있다.
+
+중간 연산의 중요한 특징은 단말 연산을 스트림 파이프라인에 실행하기 전까지는 아무 연산도 수행하지 않는다는 것, 즉 Lazy하다는 것이다.
+- 중간 연산을 합친 다음에 합쳐진 중간 연산을 최종 연사으로 한 번에 처리하기 때문이다.
+
+### 예시
+
+```java
+List<String> names =
+  menu.stream()
+    .filter(dish -> dish.getCalories() > 300)
+    .map(Dish::getName)
+    .limit(3)
+    .collect(toList());
+```
+
+> Q. 예시에서 Lazy로 처리해서 얻는 장점이 무엇인가?
+>
+> A.
+> 1. 300칼로리가 넘는 요리는 여러개 지만 오직 처음 3개만 선택된다. (limit 연산, 쇼트 서킷)
+> 2. filter, map은 서로 다른 연산이지만 한 과정으로 병합되었다. (루프 퓨전)
+
+### 종류
+
+| 연산       | 반환 형식     | 연산의 인수        | 함수 디스크립터     |
+|----------|-----------|---------------|--------------|
+| filter   | Stream<T> | Predicate<T>  | T -> boolean |
+| map      | Stream<T> | Function<T,R> | T -> R       |
+| limit    | Stream<T> ||
+| sorted   | Stream<T> | Comparator<T> | (T,T) -> int |
+| distinct | Stream<T> ||
+
+---
+
+## 최종 연산
+
+최종 연산은 스트림 파이프라인에서 결과를 도출한다.
+
+| 연산      | 반환 형식 | 목적                                |
+|---------|-------|-----------------------------------|
+| forEach | void  | 스트림의 각 요소를 소비하면서 람다 적용            |
+| count   | long  | 스트림의 요소 갯수 반환                     |
+| collect |       | 스트림을 리듀스해서 리스트, 맵, 정수 형식의 컬랙션을 반환 |
