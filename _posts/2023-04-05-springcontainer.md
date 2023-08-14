@@ -7,7 +7,7 @@ tags: [spring]
 
 [Servlet](https://sangwoong12.github.io/posts/servlet/)
 
-# Dispatcher Servlet
+## Dispatcher Servlet
 
 - Spring MVC 프레임워크의 핵심 구성 요소중 하나로, 클라이언트 요청을 처리하고 적절한 Spring Controller로 라우터하는 역할을 한다.
 
@@ -23,7 +23,7 @@ public class MyServlet extends HttpServlet {
 - 하지만 spring 에서는 Dispatcher Servlet 이라는 모든 요청을 당담하는 서블릿을 두고 컨트롤러에 위임을 하여 요청을 처리한다.
 - 그렇기 때문에 프론트 컨트롤러 디자인 패턴이 적용된 SpringMVC 를 통해 개발자는 별도의 서블릿 개발없이, Controller 의 구현만으로도 동적인 response 를 클라이언트에게 줄 수 있다.
 
-## DispatcherServlet.java
+### DispatcherServlet.java
 
 <img src="/images/spring-container/dispatcher-servlet-cycle.png">
 
@@ -32,11 +32,11 @@ public class MyServlet extends HttpServlet {
 - ViewResolver : Controller 가 view 를 return 했을때 해당 view 를 찾아 반환
 
 
-## 프론트 컨트롤러 패턴
+### 프론트 컨트롤러 패턴
 - 서블릿의 URL 맵핑을 하기 위해 web.xml 을 통해 등록하고 사용하였다.
 - 위에서 말했듯 Dispatcher Servlet 이 모든 요청을 받아 핸들링하고 공통작업을 처리하기 때문에 프론트 컨트롤러 패턴이다.
 
-# Spring Container
+## Spring Container
 
 <img src="/images/spring-container/spring-container-cycle.png">
 
@@ -55,6 +55,6 @@ public class MyServlet extends HttpServlet {
   - 서로 다른 여러 Servlet에서 공통적으로 공유해서 사용할 수 있는 Bean을 선언한다.
   - Application Context에 정의된 Bean은 Servlet Context에 정의 된 Bean을 사용할 수 없다.
 
-# 정리
+## 정리
 
 <img src="/images/spring-container/spring-container.png">
