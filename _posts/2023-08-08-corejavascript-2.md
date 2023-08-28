@@ -293,6 +293,8 @@ console.log(a); // (3)
 
 <img src="/images/core-javascript/2/1.png">
 
+---
+
 ## thisBinding
 
 실행 컨텍스트의 thisBinding에는 this로 지정된 객체가 저장된다. 실행 컨텍스트 활성화 당시에 this가 지정되지 않은 경우 this에는 전역 객체가 저장된다.
