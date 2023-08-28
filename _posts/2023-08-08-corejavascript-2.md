@@ -1,5 +1,7 @@
 ---
-title: 실행 컨텍스트 date: 2023-08-08 18:00:00 +0800 categories: [코어 자바스크립트]
+title: 실행 컨텍스트
+date: 2023-08-08 18:00:00 +0800
+categories: [코어 자바스크립트]
 tags: [javascript]
 ---
 
@@ -107,13 +109,14 @@ console.log(a); // 1
 
 ```javascript
 /* 원본 코드 (1) */
-function a (x) {  // 수집 대상 1 (매개변수)
+function a(x) {  // 수집 대상 1 (매개변수)
   console.log(x); // (1)
   var x;          // 수집 대상 2 (변수 선언)
   console.log(x); // (2)
   var x = 2;      // 수집 대상 3 (변수 선언)
   console.log(x); // (3)
 }
+
 a(1);
 ```
 
@@ -121,7 +124,7 @@ a(1);
 
 ```javascript
 /* (1) 코드가 호이스팅을 마친 상태 */
-function a (x) {
+function a(x) {
   var x; // 수집 대상 1의 변수 선언 부분
   var x; // 수집 대상 2의 변수 선언 부분
   var x; // 수집 대상 3의 변수 선언 부분
@@ -132,6 +135,7 @@ function a (x) {
   x = 2; // 수집 대상 3의 할당 부분
   console.log(x); // (3)
 }
+
 a(1);
 ```
 
@@ -141,47 +145,54 @@ a(1);
 
 ```javascript
 /* 원본 코드 (2) */
-function a () {
+function a() {
   console.log(b);  // (1)
   var b = 'bbb';   // 수집 대상 1(변수 선언)
   console.log(b);  // (2)
-  function b () {} // 수집 대상 2(함수 선언)
+  function b() {
+  } // 수집 대상 2(함수 선언)
   console.log(b);  // (3)
 }
+
 a();
 ```
 
 위의 코드를 실행시 ```(1) : undefined ,(2) 'bbb', (3) b 함수 ``` 와 같은 동작을 예상할 수 있다. 하지만 실제 이렇게 동작하지 않는다.
 
 ```javascript
-function a () {
+function a() {
   var b;           // 수집 대상 1. 변수는 선언부만 끌어올린다.
-  function b () {} // 수집 대상 2. 함수 선언은 전체를 끌어올린다.
+  function b() {
+  } // 수집 대상 2. 함수 선언은 전체를 끌어올린다.
 
   console.log(b);  // (1)
   b = 'bbb';       // 변수의 할당부는 원래 잘에 남겨둔다.
   console.log(b);  // (2)
   console.log(b);  // (3)
 }
+
 a();
 ```
 
 실제 결과는 ```(1) : b 함수, (2) : 'bbb', (3) : 'bbb' ```가 나온다.
 
-
 #### 함수 선언문과 함수 표현식
 
 ```javascript
 /* 함수 선언문 (기명 함수 표현식) : function 정의부만 존재할 경우 */
-function a () {/*...*/}
+function a() {/*...*/
+}
+
 a();
 
 /* 함수 표현식 (익명) : function에 변수만 선언하는 경우 */
-var b = function () {/*...*/}
+var b = function () {/*...*/
+}
 b();
 
 /* 함수 표현식 : function에 별도의 변수를 할당하는 경우 */
-var c = function d () {/*...*/}
+var c = function d() {/*...*/
+}
 c();
 //d(); 에러발생.
 ```
@@ -191,17 +202,66 @@ c();
 > A. 외부에서 함수를 호출할 수 없다. 그러나 이제는 모든 브라우저들이 익명 함수 표현식의 변수명을 함수의 name 프로퍼티에 할당하고 있다.
 
 ```javascript
-console.log(sum(1,2));
-console.log(multiply(3,4));
+/* 함수 선언문과 함수 표현식 예시 */
+console.log(sum(1, 2));
+console.log(multiply(3, 4));
 
-function sum (a, b) { // 기명 함수 표현식
+function sum(a, b) { // 기명 함수 표현식 (1)
   return a + b;
 }
 
-var multiply = function (a, b) { // 함수 표현식
+var multiply = function (a, b) { // 함수 표현식 (2)
   return a * b;
 }
 ```
 
+위의 결과로 ```(1) 3,(2) 12```를 결과를 와 같은 동작을 예상할 수 있지만 결과는 아니다. 기명 함수 표현식과 함수 표현식은 다른 방법으로 호이스팅 처리가 된다.
 
+```javascript
+/* 함수 선언문과 함수 표현식가 호이스팅을 마친 상태  */
+var sum = function sum(a, b) { // 기명 함수 표현식은 전체 호이스팅
+  return a + b;
+}
+var multiply; // 변수는 선언부만 끌어 올림
 
+console.log(sum(1, 2));
+console.log(multiply(3, 4));
+
+multiply = function (a, b) {
+  return a * b;
+}
+```
+
+위의 결과는 ```(1) 3, (2) TypeError: multiply is not a function```가 발생한다. 이유는 호이스팅 단계에서 **기명 표현식은 그대로
+호이스팅**되지만 함수 표현식은 그렇지 않다.
+
+그렇다면, 항상 **기명 함수 표현식**만 쓰면 되지 않는가? 라는 생각을 할 수 있다.
+
+```javascript
+console.log(sum(3, 4)); // (1)
+
+/* 초기 선언 */
+function sum(x, y) {
+  return x + y;
+}
+
+console.log(sum(3, 4)); // (2)
+
+/* 재 선언 */
+function sum(x, y) {
+  return x + '+' + y + '=' + (x + y);
+}
+
+var c = sum(1, 2);     // (3)
+console.log(c);
+```
+
+위는 ```(1) 7, (2) 7, (3) 1+2=3```을 예상할 수 있지만, 결과는 아니다 **기명 표현식은 그대로 호이스팅**하기 때문에 초기 선언은 재 선언으로 인해
+덮어진다.
+
+### outerEnvironmentReference
+
+'식별자의 유효범위'를 안에서 부터 바깥으로 차례로 검색해나가는 것을 **스코프 체인**이라고 하고 이를 가능케 하는 것이
+바로 ```outerEnviromentRefernce```이다.
+
+#### 스코프 체인
