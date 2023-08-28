@@ -84,9 +84,7 @@ console.log(a); // 1
 ```environmentRecord```로 인하여 호이스팅이 발생한다.
 ```outerEnvironmentReference```로 인하여 스코프와 스코프체인이 형성된다.
 
----
-
-### environmentRecord와 호이스팅
+### environmentRecord의 호이스팅
 
 ```environmentRecord```에는 현재 컨텍스트와 관련된 코드의 식별자 정보들을 내부 전체를 처음부터 끝가지 순서대로 수집한다.
 
@@ -97,7 +95,7 @@ console.log(a); // 1
 변수 정보를 수집하는 과정을 모두 마쳤더라도 아직 실행 컨텍스트가 관여할 코드들은 실행되기 전의 상태이다. 즉, JavaScript 엔진은 이미 해당 환경에 속한 코드의 변수명들을
 모두 알고 있는 셈이다.
 
-자바스크립트 엔진이 실제로 끌어올리지는 않지만 편의상 끌어올린 것으로 간주하자고 해서 **호이스팅**이라고 한다.
+자바스크립트 엔진이 실제로 끌어올리지는 않지만 편의상 끌어올린 것으로 간주하자고 해서 위의 과정을 **호이스팅**이라고 한다.
 
 #### 호스트 객체
 
@@ -265,3 +263,40 @@ console.log(c);
 바로 ```outerEnviromentRefernce```이다.
 
 #### 스코프 체인
+
+outerEnvironmentReference는 현재 호출된 함수가 선언될 당시의 LexicalEnvironment를 참조한다.
+
+즉, 스코프 체인중 가장 안에 있는 스코프의 경우 전역 컨텍스트까지 참조가능하다.
+
+```javascript
+var a = 1;
+// outer함수 outerEnvironmentReference -> 전역 컨텍스트의 LexicalEnvironment를 참조
+var outer = function () {
+  // inner함수 outerEnvironmentReference -> outer의 LexicalEnvironment를 참조
+  var inner = function () {
+    console.log(a); // (1)
+    var a = 3;
+  }
+  inner();
+  console.log(a); // (2)
+}
+outer();
+console.log(a); // (3)
+```
+
+```(1) 1, (2) 1, (3) 1``` 의 결과를 예상했지만 다른 결과가 나온다.
+
+> Q. ```(1) undefined, (2) 1, (3) 1```라는 결과가 나오는 이유가 무엇일까?
+>
+> A. inner 클래스 내부 var a 가 선언되어 있기 때문에 전역 컨텍스트에 존재하는 a를 찾지 않는다. 이를 **변수 은닉화**라고 한다.
+
+
+<img src="../images/core-javascript/2/1.png">
+
+## thisBinding
+
+실행 컨텍스트의 thisBinding에는 this로 지정된 객체가 저장된다. 실행 컨텍스트 활성화 당시에 this가 지정되지 않은 경우 this에는 전역 객체가 저장된다.
+
+그 밖에는 함수를 호출하는 방법에 따라 this에 저장되는 대상이 다르다.
+
+
