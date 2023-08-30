@@ -44,7 +44,7 @@ List<Integer> numbers = Arrays.asList(1, 2, 3, 3, 2, 4);
 ```
 
 
-<img src="../images/modern/chapter5/2.png">
+<img src="/images/modern/chapter5/2.png">
 
 ---
 
@@ -117,7 +117,7 @@ List<Dish> dishes = specialMenu
 ```limit(N)```는 프레디케이트와 일치하는 처음 N요소를 선택한 다음 즉시 결과를 반환한다.
 - 만약 정렬되어 있지 않는 데이터라면 정렬되지 않은 상태로 반환한다.
 
-<img src="../images/modern/chapter5/3.png">
+<img src="/images/modern/chapter5/3.png">
 
 ## 요소 건너뛰기 - skip(N)
 
@@ -132,7 +132,9 @@ List<Dish> dishes = specialMenu
 ```
 ```skip(N)``` 메서드는 ```limit(N)``` 메서드와 상호 보완적인 연산을 수행한다.
 
-<img src="../images/modern/chapter5/4.png">
+<img src="/images/modern/chapter5/4.png">
+
+---
 
 ## 맵핑
 
@@ -172,7 +174,7 @@ words.stream()
 
 ```map```의 반환 값이 ```Stream<String[]>```으로 원했던 ```Stream<String>```이 아니다.
 
-<img src="../images/modern/chapter5/5.png">
+<img src="/images/modern/chapter5/5.png">
 
 
 ### map과 Arrays.stream 활용
@@ -203,7 +205,9 @@ List<String> uniqueCharacters =
        .collect(toList());
 ```
 
-<img src="../images/modern/chapter5/6.png">
+<img src="/images/modern/chapter5/6.png">
+
+---
 
 ## 검색과 매핑
 
@@ -254,6 +258,8 @@ Optional<Integer> firstSquareDivisibleByThree =
 >
 > A. 병렬성 때문에 필요하다. 병렬 실행에서는 첫 번쨰 요소를 찾기 어렵다. 반환 순서가 상관없다면 findAny를 사용하는 것이 좋다.
 
+---
+
 ## 리듀싱
 
 스트림은 리듀싱 연상(모든 스트림 요소를 처리해서 값으로 도출하는)을 지원한다.
@@ -283,7 +289,7 @@ int sum = numbers.stream().reduce(0, (a,b) -> a + b);
 int sum = numbers.stream().reduce(0, Integer::sum);
 ```
 
-<img src="../images/modern/chapter5/7.png">
+<img src="/images/modern/chapter5/7.png">
 
 #### 초기값을 받지 않도록 오버로드된 ```reduce```
 
@@ -311,7 +317,7 @@ Optional<Integer> max = numbers.stream().reduce(Integer::max);
 Optional<Integer> min = numbers.stream().reduce(Integer::min);
 ```
 
-<img src="../images/modern/chapter5/8.png">
+<img src="/images/modern/chapter5/8.png">
 
 > Q. 기존의 반복으로 합계를 구하는 방법도 있는데 ```reduce```를 쓰는 이유는?
 >
@@ -326,8 +332,10 @@ Optional<Integer> min = numbers.stream().reduce(Integer::min);
 ### 상태 없음과 상태 있음
 
 각각의 연산은 내부적인 상태를 고려해야 한다.
-- **map**, **filter** 등은 입력 스트림에서 각 요소를 받아 0 또는 결과를 출력 스트림으로 보낸다. 따라서 이들은 **내부 상태를 갖지 않는 연산(stateless operaion)** 이다.
-- **sorted**, **distinct** 같은 연산은 이전 연산에 대한 정보를 알고 있어야 한다. 이러한 연산을 **내부 상태를 갖는 연산(stateful operation)** 이라 한다.
+- ```map```, ```filter``` 등은 입력 스트림에서 각 요소를 받아 0 또는 결과를 출력 스트림으로 보낸다. 따라서 이들은 **내부 상태를 갖지 않는 연산(stateless operaion)** 이다.
+- ```sorted```, ```distinct``` 같은 연산은 이전 연산에 대한 정보를 알고 있어야 한다. 이러한 연산을 **내부 상태를 갖는 연산(stateful operation)** 이라 한다.
+
+---
 
 ## 숫자형 스트림 - 기본형 특화 스트림
 
@@ -344,7 +352,7 @@ int calories = menu.stream()
 ```java
 int calories = menu.stream()
                   .map(Dish::getCalories)
-                  .sum();
+                  .sum(); // X
 ```
 
 ```map``` 메서드가 ```Stream<T>``` 를 생성하기 때문에 ```sum```메서드를 지원하지 않는다. 그렇기 때문에 스트림은 **기본형 특화 스트림**을 제공한다.
@@ -353,4 +361,124 @@ int calories = menu.stream()
 
 ### 숫자 스트림으로 매핑
 
+스트림을 특화 스트림으로 변환할 때 ```mapToInt```, ```mapToDouble```, ```mapToLong``` 세 가지 메서드를 가장 많이 사용한다.
 
+```java
+int calories = menu.stream()
+                  .mapToInt(Dish::getCalories) // Stream<Dish>
+                  .sum(); // IntStream
+```
+
+### 객체 스트림으로 복원하기
+
+```boxed``` 메서드를 통해 숫자 스트림을 다시 스트림으로 복원할 수 있다.
+
+```java
+IntStream intStream = menu.stream().mapToInt(Dish::getCalories);
+Stream<Integer> stream = intStream.boxed();
+```
+
+### 기본값 : OptionalInt
+
+IntStream에서 최댓값을 찾을 때는 0이라는 기본값 때문에 잘못된 결과가 도출될 수 있다.
+
+스트림에 요소가 없는 상황과 실제 최댓값이 0인 상황을 어떻게 구별하기 어렵기 때문에
+이전에 값이 존재하는 여부를 가르킬 수 있는 컨테이너 클래스 Optional을 이용한 ```OptionalInt```, ```OptionalDouble```, ```OptionalLong``` 세 가지 기본형 특화 스트림 버전을 제공한다.
+
+```java
+OptionalInt maxCalories = menu.stream()
+                              .mapToInt(Dish::getCalories)
+                              .max();
+
+int max = maxCalories.orElse(1) // 값이 없을 경우 기본값을 명시적으로 설정
+```
+
+### 숫자 범위
+
+프로그램에서는 특정 범위의 숫자를 이용해야 하는 상황이 자주 발생한다.
+
+```IntStream```, ```LongStream``` 에서는 ```range``` 와 ```rangeClosed``` 라는 두 가지 정적 메서드를 제공한다.
+
+두 메서드 모두 첫 번째 인수로 시작값을, 두 번째 인수로 종료값을 갖는다.
+
+range 메서드는 시작값과 종료값이 결과에 포함되지 않는 반면 rangeClosed 는 시작값과 종료값이 결과에 포함된다.
+
+```java
+IntStream evenNumbers = IntStream.rangeClosed(1, 100) // [1,100]의 범위를 나타낸다.
+  .filter(n -> n % 2 == 0); // 1 부터 100까지 짝수 스트림
+System.out.println(evenNumbers.count());
+```
+
+---
+
+## 스트림 만들기
+
+### 값으로 스트림 만들기
+
+```java
+Stream<String> stream = Stream.of("Modern", "java", "In", "Action");
+```
+
+### 빈 스트림 만들기
+
+```java
+Stream<String> emptyStream = Stream.empty();
+```
+### null이 될 수 있는 객체로 스트림 만들기
+
+```java
+String homeValue = System.getProperty("home");
+Stream<String> homeValueStream = homeValue == null ? Stream.empty() : Stream.of(value);
+```
+
+### 배열로 스트림 만들기
+
+```java
+int[] numbers = {2, 3, 5, 7, 11, 13};
+int sum = Arrays.stream(numbers).sum();
+```
+
+### 파일로 스트림 만들기
+
+```java
+long uniqueWords = 0;
+// 스트림은 자원을 자동으로 해제할 수 있는 AutoCloseable 이므로 try-with-resources 사용
+try (Stream<String> lines =
+          Files.lines(Paths.get("data.txt"), Charset.defaultCharset())) {
+uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" ")))
+                   .distinct()
+                   .count();
+}
+catch(IOException e) {}// 예외처리
+
+```
+
+---
+
+## 함수로 무한 스트림 만들기
+
+스트림은 함수에서 스트림을 만들 수 있는 두 정적 메서드 ```Stream.iterate```, ```Stream.generate```를 제공한다.
+
+두 연산을 이용해서 **무한 스트림(언바운드 스트림)**, 즉 고정된 컬렉션에서 고정된 크기로 스트림을 만들었던 것과는 달리 크기가 고정되지 않은 스트림을 만들 수 있다.
+
+무한 값
+### iterable
+
+```java
+Stream.iterate(0, n -> n + 2)
+      .limit(10) // 무한 스트림을 limit 함수로 제한한다.
+      .forEach(System.out::println);
+```
+
+### Predicate
+
+```java
+IntStream.iterate(0, n -> n < 100, n -> n + 4) // Predicate 로 제한
+  .forEach(System.out::println);
+```
+
+### generate
+
+```java
+Stream.generate(Math::random)
+```
