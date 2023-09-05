@@ -1,6 +1,6 @@
 ---
 title: this
-date: 2023-08-08 18:00:00 +0800
+date: 2023-08-28 18:00:00 +0800
 categories: [코어 자바스크립트]
 tags: [javascript]
 ---
