@@ -187,7 +187,7 @@ this를 명시적으로 바인딩하는 방법도 존재한다.
 
 ```call``` 메서드는 메서드의 호출 주체인 함수를 즉시 실행하는 함수로 첫 번쨰 인자로 this를 바인딩하고, 이후 매개변수를 할당하여 사용한다.
 
-함수를 그냥 실행하면 this는 전역객체 참조하지만 call 메서드를 이용하면 임의의 객체를 this로 지정할 수 있다.
+함수를 그냥 실행하면 this는 전역객체 참조하지만 ```call``` 메서드를 이용하면 임의의 객체를 this로 지정할 수 있다.
 
 ```javascript
 var obj = {
@@ -200,3 +200,280 @@ obj.method(2, 3);
 obj.method.call({a: 4}, 5, 6);
 ```
 
+### apply 메서드
+
+```call``` 메서드는 call 메서드와 기능적으로 완전히 동일하다. 차이점은 ```call``` 메서드는 1번째 인자를 제외한 나머지를 매개변수로
+지정, ```apply```는 2번째 인자를 배열로 매개변수로 받는다.
+
+```javascript
+var func = function (a, b, c) {
+  console.log(this, a, b, c);
+};
+func.apply({x: 1}, [4, 5, 6]);
+
+var obj = {
+  a: 1,
+  method: function (x, y) {
+    console.log(this.a, x, y);
+  }
+};
+obj.method.apply({a: 4}, [5, 6]);
+```
+
+### call / apply 메서드 활용
+
+```javascript
+/* 유사배열객체에 배열 메서드를 적용 */
+var obj = {
+  0: 'a',
+  1: 'b',
+  2: 'c',
+  length: 3
+}; // 유사 배열 : length와 인덱스를 프로퍼티로 가지는 객체
+Array.prototype.push.call(obj, 'd');
+console.log(obj);
+
+var arr = Array.prototype.slice.call(obj);
+console.log(arr);
+```
+
+유사 배열 객체에 ```call```,```apply```메서드를 통해 배열 메서드를 사용할 수 있고, ```slice```를 통해 배열로 전환할 수 있다.
+
+```javascript
+/* arguments, NodeList에 배열 메서드를 적용 */
+function a() {
+  var argv = Array.prototype.slice.call(arguments);
+  argv.forEach(function (arg) {
+    console.log(arg);
+  });
+}
+
+a(1, 2, 3);
+
+document.body.innerHTML = '<div>a</div><div>b</div><div>c</div>';
+var nodeList = document.querySelectorAll('div');
+var nodeArr = Array.prototype.slice.call(nodeList);
+nodeArr.forEach(function (node) {
+  console.log(node)
+});
+```
+
+함수 내부에서 접근할 수 잇는 arguments 와 Node 선택자로 선택한 결과인 NodeList도 유사 배열 이기 때문에 가능하다.
+
+```javascript
+/* 문자열에 배열 메서드 적용 예시 */
+var str = 'abc def';
+
+Array.prototype.push.call(str, ', pushed string');
+// Error : Cannot assign to read only property 'length' of object [object String]
+
+Array.prototype.concat.call(str, 'string'); // [String {"abc def"}, "string"]
+Array.prototype.every.call(str, function (char) {
+  return char !== ' ';
+}); // false
+Array.prototype.some.call(str, function (char) {
+  return char === ' ';
+});  // true
+
+var newArr = Array.prototype.map.call(str, function (char) {
+  return char + '!';
+});
+console.log(newArr); // ['a!', 'b!', 'c!', ' !', 'd!', 'e!', 'f!']
+
+var newStr = Array.prototype.reduce.apply(str, [
+  function (string, char, i) {
+    return string + char + i;
+  }, ''
+]);
+console.log(newArr);        // "a0b1c2 3d4e5f6"
+```
+
+문자열의 경우 length 프로퍼티가 읽기 전용이기 떄문에 원본 문자열에 변경하는 메서드(```push``,```pop```,```shift```,```unshift```,```
+splice``` 등) 에러를 던지며, ```concat```처럼 대상이 반드시 배열이어야 하는 경우에는 에러는 나지 않지만 제대로 된 결과를 얻을 수 없다.
+
+```javascript
+/* ES6의 Array.from 메서드 */
+var obj = {
+  0: 'a',
+  1: 'b',
+  2: 'c',
+  length: 3
+};
+var arr = Array.from(obj);
+console.log(arr); // ['a', 'b', 'c']
+```
+
+```call```,```apply``` 를 본래 목적인 'this를 원하는 값으로 지정해서 호출한다'라는 본래 의도와 다르게 사용했다. ES6에서 배열 전환 메서드인 from을
+지원한다.
+
+```javascript
+/* 생성자 내부에서 다른 생성자 호출 */
+function Person(name, gender) {
+  this.name = name;
+  this.gender = gender;
+}
+
+function Student(name, gender, school) {
+  Person.call(this, name, gender);
+  this.school = school;
+}
+
+function Employee(name, gender, company) {
+  Person.apply(this, [name, gender]);
+  this.company = company;
+}
+
+var by = new Student('보영', 'female', '단국대');
+var jn = new Employee('재난', 'male', '구골');
+```
+
+함수 내부에서 다른 생성자를 호출하여 중복코드를 줄일 수 있다.
+
+```javascript
+/* 최대/최소값을 구하는 코드를 직접 구현 */
+var numbers = [10, 20, 3, 16, 45];
+var max = min = numbers[0];
+numbers.forEach(function (number) {
+  if (number > max) {
+    max = number;
+  }
+  if (number < min) {
+    min = number;
+  }
+});
+console.log(max, min);
+
+/* 여러 인수를 받는 메서드(Math.max,min)에 apply 적용 */
+var max = Math.max.apply(null, numbers);
+var min = Math.min.apply(null, numbers);
+console.log(max, min);
+
+/* ES6 펼치기 연산자 활용 */
+const max = Math.max(...numbers);
+const min = Math.min(...numbers);
+```
+
+## bind 메서드
+
+```bind```메서드는 ES5에 추가된 기능으로, ```call```가 비슷하지만 즉시 호출하지 않고 넘겨 받은 this 및 인수들을 바탕으로 새로운 함수를 반환하는
+메서드이다.
+
+```javascript
+/* this 지정과 부분 적용 함수 구현 */
+var func = function (a, b, c, d) {
+  console.log(this, a, b, c, d);
+};
+func(1, 2, 3, 4);       // Window{...} 1 2 3 4
+
+var bindFunc1 = func.bind({x: 1});
+bindFunc1(5, 6, 7, 8);  // {x : 1} 5 6 7 8
+
+var bindFunc2 = func.bind({x: 1}, 4, 5);
+bindFunc2(6, 7);        // {x : 1} 4 5 6 7
+bindFunc2(8, 9);        // {x : 1} 4 5 8 9
+```
+
+### name 프로퍼티
+
+```javascript
+/* name 프로퍼티 */
+var func = function (a, b, c, d) {
+  console.log(this, a, b, c, d);
+};
+var bindFunc = func.bind({x: 1}, 4, 5);
+console.log(func.name);       // func
+console.log(bindFunc.name);   // bound func
+```
+
+```bind```메서드를 적용한 함수는 name 프로퍼티에 'bound'라는 접두어가 붙는다.
+
+```call```,```apply```보다 이름을 통해 코드 추적하기에 더 수월하다.
+
+### 상위 컨텍스트의 this를 내부 함수나 콜백 함수에 전달
+
+```javascript
+var obj = {
+  outer: function () {
+    console.log(this); // Outer
+    var innerFunc = function () {
+      console.log(this);
+    }.bind(this); // Window -> Outer
+    innerFunc();
+  }
+};
+obj.outer();
+```
+
+콜백 함수 내에서의 this에 관여하는 함수 또는 메서드에 대해서도 bind 메서드를 이용하면 this 값을 사용자의 입맛에 맞게 바꿀수 있다.
+
+```javascript
+var obj = {
+  logThis: function () {
+    console.log(this);
+  },
+  logThisLater1: function () {
+    setTimeout(this.logThis, 500);
+  },
+  logThisLater2: function () {
+    setTimeout(this.logThis.bind(this), 1000);
+  }
+};
+obj.logThisLater1();  // Window { ... }
+obj.logThisLater2();  // obj { logThis: f, ... }
+```
+
+---
+
+## 화살표 함수의 예외사항
+
+화살표 함수는 실행 컨텍스트 생성 시 this를 바인딩하는 과정이 제외되었다. 즉, 함수 내부에는 this가 아예 없으며, 접근하고자 하면 스코프체인상 가장 가까운 this에
+접근하게 된다.
+
+```javascript
+var obj = {
+  outer: function () {
+    console.log(this);    // Outer
+    var innerFunc = () => {
+      console.log(this);  // Outer
+    }; // this를 우회, call/apply/bind를 적용할 필요가 없다.
+    innerFunc;
+  }
+};
+obj.outer();
+```
+
+## 별도의 인자로 this를 받는 경우(콜백 함수 내에서의 this)
+
+콜백 함수를 인자로 받는 메서드 중 일부는 추가로 this로 지정할 객체(thisArg)를 인자로 지정할 수 있는 경우 콜백 함수 내부에서 this 값을 원하는 대로 변경할 수 있다.
+
+이러 형태는 여러 내부 요소에 대해 같은 동작을 반복 수행해야 하는 **배열 메서드**에 많이 포전되어 있다.
+
+```javascript
+/* thisArg를 받는 forEach 메서드 */
+var report = {
+  sum: 0,
+  count: 0,
+  add: function () {
+    var args = Array.prototype.slice.call(arguments);
+    args.forEach(function (entry) {
+      this.sum += entry;
+      ++this.count;
+    }, this);
+  },
+  average: function () {
+    return this.sum / this.count;
+  }
+};
+report.add(60,85,95);
+console.log(report.sum, report.count, report.average());  // 240 3 80
+```
+
+```javascript
+/* 콜백 함수와 함께 thisArg를 인자로 받는 메서드 */
+Array.prototype.forEach(callback[, thisArg])
+Array.prototype.map(callback[, thisArg])
+Array.prototype.filter(callback[, thisArg])
+Array.prototype.some(callback[, thisArg])
+Array.prototype.every(callback[, thisArg])
+Array.prototype.find(callback[, thisArg])
+```
