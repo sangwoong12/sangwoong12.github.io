@@ -1,5 +1,7 @@
 ---
-title: 콜백 함수 date: 2023-08-05 18:00:00 +0800 categories: [코어 자바스크립트]
+title: 콜백 함수
+date: 2023-08-05 18:00:00 +0800
+categories: [코어 자바스크립트]
 tags: [javascript]
 ---
 
@@ -10,8 +12,7 @@ tags: [javascript]
 ### 호출 시점
 
 ```javascript
-var intervalID = scope.setInterval(func, delay[, param1, param2, ...])
-;
+var intervalID = scope.setInterval(func, delay[, param1, param2, ...]);
 ```
 
 ```setInterval``` : 매개변수로 func, delay를 필수로 받고 3번째 인자부터 선택적으로 받는 함수로 func을 delay마다 실행되며, 나머지 인자는
@@ -40,8 +41,7 @@ timer = setInterval(cbFunc, 300);
 ### 인자
 
 ```javascript
-Array.prototype.map(callback[, thisArg
-])
+Array.prototype.map(callback[, thisArg]);
 callback: function (currentValue, index, array)
 ```
 
@@ -249,6 +249,7 @@ setTimeout(function (name) {
 ### 비동기 작업의 동기적 표현 - Promise
 
 ```javascript
+/* promise 방식 1 */
 new Promise(function (resolve) {
   setTimeout(function () {
     var name = '에스프레소';
@@ -271,9 +272,8 @@ new 연산자와 함꼐 호출한 ```Promise```의 인자로 넘겨주는 콜백
 
 따라서 비동기 작업이 완료될 때 비로소 ```resolve```,```reject```를 호출하는 방법으로 비동기 작업을 동기적 표현이 가능하다.ㅁ
 
-### 비동기 작업의 동기적 표현 - Promise
-
 ```javascript
+/* promise 방식 2 */
 var addCoffee = function (name) {
   return function (prevName) {
     return new Promise(function (resolve) {
@@ -292,4 +292,55 @@ addCoffee('에스프레소')()
 .then(addCoffee('카페라떼'));
 ```
 
-###
+2,3 번째 줄에서 클로저를 사용했는데, 자세한 내용은 다음 장에서 자세히 다룬다.
+
+```javascript
+/* Generator 함수 */
+var addCoffee = function (prevName, name) {
+  setTimeout(function () {
+    coffeeMaker.next(prevName ? prevName + ', ' + name : name);
+  }, 500);
+};
+
+var coffeeGenerator = function* () { // function 뒤에 *가 붙은 함수를 Generator 함수
+  var espresso = yield addCoffee('', '에스프레소');
+  console.log(espresso);
+  var americano = yield addCoffee(espresso, '아메리카노');
+  console.log(americano);
+  //var mocha ...
+};
+var coffeeMaker = coffeeGenerator();
+coffeeMaker.next();
+```
+
+Generator 함수를 실행하면 Iterator가 반환되는데, Interator는 ```next```라는 메서드를 가지고 있다.
+
+```next```메서드를 호출하면 Generator 함수 내부에 가장 먼저 등장하는 ```yield```에서 함수 실행을 멈춘다. 그후 ```next```가 호출되면
+다음 ```yield```로 넘어간다. 즉, 비동기 작업이 완료 시점에 ```next```를 호출하여 순차적 진행이 가능하다.
+
+```javascript
+/* promise 방식 3 - Async/await */
+var addCoffee = function (name) {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      resolve(name);
+    }, 500);
+  });
+};
+// async : 비동기 작업 수행하고자 하는 함수 앞에 async 명시
+var coffeeMaker = async function () {
+  var coffeeList = '';
+  var _addCoffee = async function (name) {
+    coffeeList += (coffeeList ? ',' : '') + await addCoffee(name);
+  };
+  // await 표기시 뒤의 내용을 자동 Promise로 전환이후 해당 내용이 resolve 이후 다음 진행
+  await _addCoffee('에스프레소');
+  console.log(coffeeList);
+  await _addCoffee('아메리카노');
+  console.log(coffeeList);
+  //await _addCoffee('카페모카'); ...
+}
+coffeeMaker();
+```
+
+```async/await```를 통해 Promise의 then과 흡사한 효과를 얻을 수 있다.
