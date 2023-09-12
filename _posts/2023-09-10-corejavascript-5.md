@@ -28,7 +28,7 @@ outer();
 일반적인 함수 및 내부함수에서의 동작이며 별다른 특별한 현상은 보이지 않는다.
 
 ```javascript
-/* 외부 함수의 변수를 참조하는 내부 함수 (2) */
+/* 외부 함수의 변수를 참조하는 내부 함수 (1) */
 var outer = function () {
   var a = 1;
   var inner = function () {
