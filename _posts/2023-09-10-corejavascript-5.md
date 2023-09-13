@@ -7,6 +7,8 @@ tags: [javascript]
 
 ## 클로저란?
 
+클로저란 '어떤 함수에서 선언한 변수를 참조하는 내부함수에서만 발생하는 현상'이라고 볼 수 있다.
+
 ```javascript
 /* 외부 함수의 변수를 참조하는 내부 함수 (1) */
 var outer = function () {
@@ -28,7 +30,7 @@ outer();
 일반적인 함수 및 내부함수에서의 동작이며 별다른 특별한 현상은 보이지 않는다.
 
 ```javascript
-/* 외부 함수의 변수를 참조하는 내부 함수 (1) */
+/* 외부 함수의 변수를 참조하는 내부 함수 (2) */
 var outer = function () {
   var a = 1;
   var inner = function () {
@@ -45,7 +47,7 @@ console.log(outer2);
 마찬가지로 ```a, inner```변수의 값들은 언젠가 가비지 컬렉터에 의해 소멸된다. 역시 일반적인 함수 및 내부 함수에서의 동작과 차이가 없다.
 
 ```javascript
-/* 외부 함수의 변수를 참조하는 내부 함수 (2) */
+/* 외부 함수의 변수를 참조하는 내부 함수 (3) */
 var outer = function () {
   var a = 1;
   var inner = function () {
