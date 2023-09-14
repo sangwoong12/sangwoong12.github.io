@@ -255,7 +255,7 @@ Object.freeze(Square.prototype);
 //...
 ```
 
-이 방법 역시 ```SubClass.prototype`````의 ```__proto__```가 ```SuperClass.prototype```를 참조하고, ```
+이 방법 역시 ```SubClass.prototype```의 ```__proto__```가 ```SuperClass.prototype```를 참조하고, ```
 SubClass.prototype```에는 불필요한 인스턴스 프로터피가 없게 한다.
 
 ### construtor 복구하기
