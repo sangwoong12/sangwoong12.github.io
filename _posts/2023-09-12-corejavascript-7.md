@@ -44,7 +44,7 @@ console.log(Rectangle.isRectangle(rect1));  // true
 - 스태틱 메서드 : 스태틱 메서드는 ```__proto__```에 존재하지 않으며, ```Uncaught TypeError : not a function```에러가 발생하고,
   생성자 함수를 this로 해야만 호출하여 출력할 수 있다.
 
-<img src="../images/core-javascript/7/2.png">
+<img src="/images/core-javascript/7/2.png">
 
 ---
 
