@@ -22,7 +22,7 @@ tags: [redis]
 - [MariaDB](https://sangwoong12.github.io/posts)
 - [Isolation Level](https://sangwoong12.github.io/posts/isolation-level)
 - [Index](https://sangwoong12.github.io/posts/index)
-- Trigger 란?
+- [Trriger](https://sangwoong12.github.io/posts/trriger)
 - LIKE 문 vs Full Text Index
 
 ### 참고 문헌
