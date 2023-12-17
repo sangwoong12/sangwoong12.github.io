@@ -1,5 +1,7 @@
 ---
-title: 면접 질문 date: 2023-12-18 18:00:00 +0800 categories: [database]
+title: 면접 질문
+date: 2023-12-18 18:00:00 +0800
+categories: [database]
 tags: [database]
 ---
 
