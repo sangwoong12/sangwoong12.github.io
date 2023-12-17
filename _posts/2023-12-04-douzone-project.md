@@ -1,7 +1,5 @@
 ---
-title: 더존 프로젝트 사용 기술에 따른 면접 준비
-date: 2023-12-09 18:00:00 +0800
-categories: [database]
+title: 더존 프로젝트 사용 기술에 따른 면접 준비 date: 2023-12-09 18:00:00 +0800 categories: [database]
 tags: [redis]
 ---
 
@@ -19,26 +17,38 @@ tags: [redis]
 
 ### Database
 
-- [MariaDB](https://sangwoong12.github.io/posts)
+- [DDL, DML](https://sangwoong12.github.io/posts/sql)
+- [정규화](https://sangwoong12.github.io/posts/normalization)
+- [SQL 집합 연산](https://sangwoong12.github.io/posts/sql2)
 - [Isolation Level](https://sangwoong12.github.io/posts/isolation-level)
 - [Index](https://sangwoong12.github.io/posts/index)
-- [Trriger](https://sangwoong12.github.io/posts/trriger)
-- LIKE 문 vs Full Text Index
+- [trigger](https://ko.wikipedia.org/wiki/데이터베이스_트리거)
+- [procedure](https://ko.wikipedia.org/wiki/%EC%A0%80%EC%9E%A5_%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80)
 
-### 참고 문헌
+참고 문헌
 
 - [MVCC 참고 자료](https://mangkyu.tistory.com/53)
 - [Lock 참고 자료](https://sabarada.tistory.com/121)
 - [트랜잭션, ACID, DeadLock 등등 참고 문헌](https://joinwithyou.tistory.com/86)
 - [Full Text Index 참고 문헌](https://inpa.tistory.com/entry/MYSQL-%F0%9F%93%9A-%ED%92%80%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%9D%B8%EB%8D%B1%EC%8A%A4Full-Text-Index-%EC%82%AC%EC%9A%A9%EB%B2%95)
-- [index 란?](https://rachel0115.tistory.com/entry/MySQL-%EC%9D%B8%EB%8D%B1%EC%8A%A4-INDEX-%EC%A0%95%EB%A6%AC-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D-%EC%83%9D%EC%84%B1-%EC%82%AD%EC%A0%9C-%EC%84%A4%EA%B3%84)
+- [trigger vs procedure](https://lovi0714.github.io/db/trigger-and-procedure/)
+- [join](https://hongong.hanbit.co.kr/sql-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95-joininner-outer-cross-self-join/)
+
+### Java
+
+- [JVM](https://sangwoong12.github.io/posts/jvm)
+- [SOLID](https://sangwoong12.github.io/posts/solid)
+- [Generic](https://sangwoong12.github.io/posts/generic)
+- [Thread](https://sangwoong12.github.io/posts/multiThread)
+- [Lambda](https://sangwoong12.github.io/posts/lambda/)
 
 ### Spring
 
-- Spring Security
-- Cookie
-- https://velog.io/@ohzzi/%EC%BF%A0%ED%82%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-API-%ED%86%B5%EC%8B%A0%EC%9D%84-%ED%95%A0-%EB%95%8C-%EC%A3%BC%EC%9D%98%ED%95%A0-%EC%A0%90
----
+Spring 아키텍처
+
+- [servlet](https://sangwoong12.github.io/posts/servlet)
+- [spring container](https://sangwoong12.github.io/posts/springcontainer)
+
 
 ## Front-end
 
@@ -52,7 +62,6 @@ tags: [redis]
   - https://dev-ellachoi.tistory.com/28
 
 ### TypeScript
-
 
 ### Browser
 
