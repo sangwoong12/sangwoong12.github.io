@@ -1,5 +1,7 @@
 ---
-title: 더존 프로젝트 사용 기술에 따른 면접 준비 date: 2023-12-09 18:00:00 +0800 categories: [database]
+title: 더존 프로젝트 사용 기술에 따른 면접 준비 
+date: 2023-12-09 18:00:00 +0800 
+categories: [database]
 tags: [redis]
 ---
 
