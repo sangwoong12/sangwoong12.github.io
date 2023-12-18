@@ -24,11 +24,11 @@ tags: [redis]
 - [SQL 집합 연산](https://sangwoong12.github.io/posts/sql2)
 - [Isolation Level](https://sangwoong12.github.io/posts/isolation-level)
 - [Index](https://sangwoong12.github.io/posts/index)
-- [trigger](https://ko.wikipedia.org/wiki/데이터베이스_트리거)
-- [procedure](https://ko.wikipedia.org/wiki/%EC%A0%80%EC%9E%A5_%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80)
 
 참고 문헌
 
+- [trigger](https://ko.wikipedia.org/wiki/데이터베이스_트리거)
+- [procedure](https://ko.wikipedia.org/wiki/%EC%A0%80%EC%9E%A5_%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80)
 - [MVCC 참고 자료](https://mangkyu.tistory.com/53)
 - [Lock 참고 자료](https://sabarada.tistory.com/121)
 - [트랜잭션, ACID, DeadLock 등등 참고 문헌](https://joinwithyou.tistory.com/86)
@@ -52,10 +52,11 @@ tags: [redis]
 - [JDK, SDK, JRE 간단정리](https://macdev.tistory.com/30)
 - [jar, war 차이](https://hyuuny.tistory.com/209)
 - [리플렉션](https://jeongkyun-it.tistory.com/225)
+- [절차지향프로그래밍 vs 객체지향프로그래밍](https://blog.naver.com/gitacademy01/222394033958)
 
 면접 질문 참고 문헌
 
-= [면접 예상 질문 1](https://f-lab.kr/blog/java-backend-interview-1)
+- [면접 예상 질문 1](https://f-lab.kr/blog/java-backend-interview-1)
 
 ### Spring
 
@@ -76,7 +77,13 @@ Spring 아키텍처
 -
   - https://dev-ellachoi.tistory.com/28
 
-### TypeScript
+참고문헌
+
+- [DOM](https://www.codestates.com/blog/content/dom-javascript)
+
+면접 질문
+
+- [react 면접 질문](https://sohyunsaurus.tistory.com/107)
 
 ### Browser
 
