@@ -53,6 +53,7 @@ tags: [redis]
 - [jar, war 차이](https://hyuuny.tistory.com/209)
 - [리플렉션](https://jeongkyun-it.tistory.com/225)
 - [절차지향프로그래밍 vs 객체지향프로그래밍](https://blog.naver.com/gitacademy01/222394033958)
+- [rest api](https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html)
 
 면접 질문 참고 문헌
 
