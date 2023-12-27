@@ -65,7 +65,7 @@ Spring 아키텍처
 
 - [servlet](https://sangwoong12.github.io/posts/servlet)
 - [spring container](https://sangwoong12.github.io/posts/springcontainer)
-
+- [보안](https://sangwoong12.github.io/posts/security-01/)
 
 ## Front-end
 
@@ -75,12 +75,13 @@ Spring 아키텍처
 - DOM
 - Fragment
 - 랜더 최적화
--
+- [fetch, axios, ajax](https://cocoon1787.tistory.com/756)
   - https://dev-ellachoi.tistory.com/28
 
 참고문헌
 
 - [DOM](https://www.codestates.com/blog/content/dom-javascript)
+- [axios, ajax, fetch](https://cocoon1787.tistory.com/756)
 
 면접 질문
 

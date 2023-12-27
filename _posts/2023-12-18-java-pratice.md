@@ -8,9 +8,21 @@ tags: [database]
 ## 형식적인 질문
 
 <details>
+  <summary>spring 삼각형</summary>
+<p>
+DI , AOP , PSA
+AOP : 스프링은 관심사 분리 기능을 제공한다. AOP , Interceptor
+DI : 의존성 주입으로 스프링은 생성자, 필드, setter 주입 방식을 지원한다.
+이런 DI 작업을 개발자가 하는 것이 아닌 스프링이 하기 때문에 Ioc Di 라고 부른다.
+PSA : 환경의 변화와 관계없이 일관된 방식의 기술로의 접근 환경을 제공하는 추상화 구조
+</p>
+</details>
+<details>
   <summary>REST Api 란?</summary>
 <p>
-REST(RESTful, Representational State Transfer, RESTful, 레스트풀) API는 REST 아키텍처 스타일의 제약 조건을 준수하고 RESTful 웹 서비스와 상호 작용할 수 있도록 하는 애플리케이션 프로그래밍 인터페이스(API 또는 웹 API)이다.<br/>
+REST(Representational State Transfer API)란 HTTP URI를 통해서 자원(resource)을 명시하고, HTTP Method(GET, POST, PUT, DELETE, PATCH 등등)을 통해서 해당 자원(URI)에 대한 CRUD Operation을 적용하는 것을 의미합니다.
+이러한 REST 원리를 따르는 API를 RESTful API라고 한다.<br/>
+
 자원(Resource):<br/>
 URI 모든 자원에 고유한 ID가 존재하고, 이 자원은 Server에 존재한다.<br/>
 자원을 구별하는 ID는 ‘/groups/:group_id’와 같은 HTTP URI 다.<br/>
@@ -52,7 +64,7 @@ MVC 패턴은 디자인 패턴중 하나로 Modal, View, Controller 세 가지 �
 객체 지향 프로그래밍 (Object-Oriented Programming, OOP)은 프로그래밍에서 필요한 데이터를 추상화 시켜 상태와 행위를 가진 객체로 만들고, 객체들간의 상호작용을 통해 로직을 구성하는 프로그래밍 방법이다.<br/>
 특징으로, 추상화, 상속, 다형성, 캡슐화 가 있다.<br/>
 또는,<br/>
-절차지향 프로그래밍은 말 그대로 실행하는 절차를 정해 프로그램하는 방법으로 객체 지향은 상태 및 행위를 가진 객체를 통해 상호작용하여 로직을 구성하는 프로그래밍 방법이다.
+절차지향 프로그래밍은 말 그대로 실행하는 절차를 정해 프로그램하는 방법이고, 객체 지향은 상태 및 행위를 가진 객체를 통해 상호작용하여 로직을 구성하는 프로그래밍 방법이다.
 
 </p>
 </details>
@@ -60,7 +72,8 @@ MVC 패턴은 디자인 패턴중 하나로 Modal, View, Controller 세 가지 �
 <details>
   <summary>객체란?</summary>
 <p>
-객체는 프로그램에서 사용되는 데이터 또는 식별자에 의해 참조되는 공간을 의미하며 값을 저장 할 변수와 작업을 수행 할 메소드를 서로 연관된 것들끼리 묶어서 만든 것을 객체라고 할 수 있다.
+객체는 프로그램에서 사용되는 데이터 또는 식별자에 의해 참조되는 공간을 의미하며 값을 저장 할 변수와 작업을
+수행 할 메소드를 서로 연관된 것들끼리 묶어서 만든 것을 객체라고 할 수 있다.
 </p>
 </details>
 
@@ -85,7 +98,10 @@ MVC 패턴은 디자인 패턴중 하나로 Modal, View, Controller 세 가지 �
 <details>
   <summary>DOM 이란?</summary>
   <p>
-DOM이란 Document Object Model의 약어이다. DOM은 HTML, XML 문서의 프로그래밍 인터페이스라고 할 수 있다. 문서의 구조화된 표현을 제공함으로써 프로그래밍 언어가 DOM 구조에 접근할 수 있도록 해주는 매우 중요한 역할이다. 개발자는 DOM 구조에 접근하여 문서 구조를 바꾸거나 스타일과 내용 등을 변경하고 이벤트를 연결시키는 등 다양한 작업을 수행할 수 있다.
+DOM이란 Document Object Model의 약어이다. DOM은 HTML, XML 문서의 프로그래밍 인터페이스라고 할 수 있다.
+문서의 구조화된 표현을 제공함으로써 프로그래밍 언어가 DOM 구조에 접근할 수 있도록 해주는 매우 중요한 역할이다.
+개발자는 DOM 구조에 접근하여 문서 구조를 바꾸거나 스타일과 내용 등을 변경하고 이벤트를 연결시키는 등
+다양한 작업을 수행할 수 있다.
 </p>
 </details>
 
@@ -106,6 +122,8 @@ Fragment는 DOM(Document Object Model)의 일부분을 나타내는 작은 단�
 <details>
   <summary>렌더링이란?</summary>
 <p>
+렌더링이란 HTML,CSS, 자바스크립트 등 개발자가 작성한 문서가 브라우저에서 출력되는 과정을 말한다.<br/>
+DOM트리와 CSSOM트리를 만들고 이들을 결합하여 렌더링 트리 생성후 이를 모든 상대적인 값을 픽셀로 변환후 페인팅한다.
 </p>
 </details>
 
@@ -127,4 +145,178 @@ Wrapper class → 기본 자료형으로 변환하는 것을 UnBoxing이라 한�
 <details>
   <summary>blocking vs non-blocking</summary>
   <p>blocking은 요청한 작업을 마칠 때까지 계속 대기한다. non-blocking은 요청한 작업을 즉시 마칠 수 없다면 즉시 return한다.</p>
+</details>
+
+<details>
+  <summary>JAR VS WAR</summary>
+<p>
+Jar 는 자바 아카이브로 JAVA 어플리케이션이 동작할 수 있도록 자바 프로젝트를 압축한 파일로 jre만 있다면 실행가능하다 war 는 웹어플리케이션 아카이브로 웹 관련 자원(html JavaScript jsp)등 웹 지원을 포함하고 was에서만 실행가능한 파일 형태이다
+</p>
+</details>
+
+<details>
+  <summary>Header 에 토큰을 넣어야하는 이유</summary>
+<p>
+HTTP 표준이 Authorization라는 헤더를 제공하여 여기에 넣는 것을 권장하고 본안 측면에서 바디에 넣을 경우 보다 노출될 가능성이 낮다.
+</p>
+</details>
+
+<details>
+  <summary>promise await 차이</summary>
+<p>
+Promise의 경우 여러 개의 비동기 작업을 연속으로 처리할때 .then .catch 비동기 작업마다 처리를 해줘야해서 코드가 중첩되고 복잡해진다<br/>
+async/await 는 비동기 코드를 동기식으로 작성할 수 있어 가독성이 향상되고 중첩된 구조가 사라지는 등의 이점이 있다.
+</p>
+</details>
+
+<details>
+  <summary>CallBack 과 Promise 차이는?</summary>
+<p>
+
+</p>
+</details>
+
+<details>
+  <summary>클로저란?</summary>
+<p>
+클로저란 어떤 함수 A에서 선언한 변수 a를 참조하는 내부함수 B를 외부로 전달할 경우 A의 실행 컨텍스트가 종료된 이후에도 변수 a가 사라지지 않는 현상<br/>
+함수가 속한 렉시컬 스코프를 기억하여, 함수가 렉시컬 스코프 밖에서 함수가 종료된 이후에도 이 스코프에 접근할 수 있게 해주는 기능이다.
+</p>
+</details>
+
+<details>
+  <summary>콜백 함수란?</summary>
+<p>
+콜백(callback) 또는 콜백 함수(callback function)는 다른 코드의 인자로서 넘겨주는 실행 가능한 코드를 말한다. 콜백함수을 넘겨받는 코드는 이 콜백을 필요에 따라 즉시 실행할 수도 있고, 아니면 나중에 실행할 수도 있다.
+</p>
+</details>
+
+<details>
+  <summary>자바스크립트는 싱글 쓰레드인데 비동기처리가 가능한 이유</summary>
+<p>
+이벤트 루프는 자바스크립트가 아닌 브라우저에 내장되어 있는 기능 중 하나다. 즉, 자바스크립트는 싱글 스레드이지만, 브라우저에서는 이벤트 루프 덕분에 멀티 스레드로 동작하여 비동기 작업이 가능하다.<br/>
+자바스크립트가 멀티 쓰레드로 실행되는 언어였다면 웹페이지에서 발생하는 동시성 문제에 대해 해결해야 했다.
+</p>
+</details>
+
+<details>
+  <summary>'' , "" , `` 차이점은?</summary>
+<p>
+큰 따옴표와 작은 따옴표는 차이가 없고 google은 HTML에서 작성하기 간단한 작은 따옴표를 권장한다. 백틱은 Escape 문자를 사용하지 않고 작성할 수 있는 장점이 있다.
+</p>
+</details>
+
+<details>
+  <summary>Hash 란?</summary>
+<p>임의의 크기를 가진 데이터를 고정된 크기의 데이터로 변환시켜 저장하는 방식</p>
+</details>
+
+<details>
+<summary>Hash 충돌이란?</summary>
+<p>
+해시 코드 충돌은 2개 이상의 Key 객체가 동일한 최종 해시값을 생성해서 동일한 버킷 위치 또는 배열 인덱스를 가리키는 상황
+</p>
+</details>
+
+<details>
+<summary>Hash 충돌 해결방법은?</summary>
+<p>
+개방 주소법으로 고정폭으로 이동하여 빈 공간을 찾는 방법과 분리 연결법으로 같은 해시값을 가질경우 LinkedList로 연결하는 방법이 있다.
+</p>
+</details>
+
+<details>
+  <summary>Webpack</summary>
+<p>
+Webpack은 여러 개의 JavaScript 파일 및 다른 종속성들을 하나로 묶어주는 번들러로 리스소를 관리할 때 사용합니다.
+</p>
+</details>
+
+<details>
+  <summary>BABEL</summary>
+<p>
+최신 자바스크립트를 브라우저 호환되는 버전으로 변환하는 역할을 하고 JSX파일을 JS로 변환하는 역할도 한다.
+</p>
+</details>
+
+<details>
+  <summary>OLTP 와 OLAP란?</summary>
+<p>
+온라인 트랜잭션 처리(Online transaction processing) 주로 실시간으로 발생하는 트랜잭션 데이터를 처리하고 관리를 정의한 말로 이에 RDBMS가 특화되어 있다.<br/>
+온라인 분석 처리(Online Analytical Processing)는 데이터 분석 및 의사결정 지원을 위한 환경을 정의한 말로 데이터를 집계, 분석하여 사용자에게 정보를 제공하는 데 사용됩니다.
+</p>
+</details>
+
+<details>
+  <summary>Database에서 LOCK이란?</summary>
+<p>
+공유(Shared) Lock으로 데이터를 읽기위한 Lock으로 공유 Lock은 공유 Lock 끼리 서로 동시에 접근이 가능하다.<br/>
+베타(Exclusive) Lock은 데이터를 변경하고자 할 때 사용되며 Lock이 해제 이전 까지는 다른 트랜잭션은 해당 리소스에 접근할 수 없다
+</p>
+</details>
+
+<details>
+  <summary>교착 상태란?</summary>
+  <p>
+트랜잭션들이 잠금이 걸린 자원을 무기한 대기하는 현상으로 이를 해결하기 위해서는 필요한 데이터에 미리 Lock을 걸어두거나, 타임 스탬프 기법(트랜잭션 간의 순서를 미리 선택)을 적용하여 데이터를 시간 순서대로 제어하는 방법이 있다.
+</p>
+</details>
+
+<details>
+  <summary>서브 쿼리의 종류는?</summary>
+<p>
+스칼라 서브쿼리로 SELECT절에 위치해 하나의 값을 반환하는 서브쿼리<br/>
+인라인 뷰로 FROM 절에 위치하는 서브쿼리로 결과는 반드시 하나의 테이블로 리턴<br/>
+중첩 서브쿼리로 WHERE 절에 위치하며 결과집합을 한정하기 위한 서브쿼리이다.
+</p>
+</details>
+
+<details>
+  <summary>VIEW 란?</summary>
+<p>
+ 뷰는 사용자에게 접근이 허용된 자료만을 제한적으로 보여주기 위해 하나 이상의 기본 테이블로부터 유도된, 이름을 가지는 가상 테이블이다.
+</p>
+</details>
+
+<details>
+  <summary>HTTP HTTPS 차이?</summary>
+<p>
+HTTP 메시지는 일반 텍스트이므로, 권한이 없는 당사자가 인터넷을 통해 쉽게 액세스하고 읽을 수 있다. 반면, HTTPS는 모든 데이터를 암호화된 형태로 전송하여 3자가 읽을 수 없다.
+</p>
+</details>
+
+<details>
+  <summary>UNION VS UNION ALL</summary>
+<p>
+여러개의 쿼리의 합집합으로 여러개의 SQL문을 합쳐서 하나의 SQL문으로 만들어주는 방법
+UNION : 여러개의 쿼리의 중복값을 제거한 결과
+UNION ALL : 여러개의 쿼리결과가 중복이 되더라도 전부 결과에 반영
+</p>
+</details>
+
+<details>
+  <summary>이벤트 버블링 , 이벤트 캡쳐링</summary>
+<p>
+이벤트 버블링이란 이벤트가 발생한 요소 부터 최상단 document 까지 이벤트를 전파
+이벤트 캡쳐링은 버블링과 반대로 동작
+</p>
+</details>
+
+<details>
+  <summary>call, apply, bind 차이</summary>
+<p>
+call, apply, bind 모두 this를 바인딩하기 위해 사용하는데
+call 의 경우 this, parameter를 순서대로 받지만 apply는 배열의 형태로 받고 둘다 즉시 실행한다.
+bind는 call, apply와 다르게 즉시 실행하지않고 함수로 반환한다.
+</p>
+</details>
+
+<details>
+  <summary>번들링이란?</summary>
+  <p></p>
+</details>
+
+<details>
+  <summary>불변객체란?</summary>
+<p>불변객체란 한번 할당하면 내부 데이터를 변경할 수 없는 객체를 뜻하며, 객체의 신뢰성이 높아지며 멀티스레드 환경에서 동기처리 없이 객체를 공유할 수 있다.</p>
 </details>
