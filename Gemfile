@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
+gem 'rake', '>= 0.a'
 gem 'google-protobuf', '3.25.2'
 
 group :test do
